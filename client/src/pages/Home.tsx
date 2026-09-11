@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import { Link } from "wouter";
+import EventCard from "@/components/EventCard";
 import PageMeta from "@/components/PageMeta";
 import SiteLayout from "@/components/SiteLayout";
+import { events } from "@/data/events";
 import { venues, type AccessKind } from "@/data/venues";
 
 const HERO_IMAGE = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663043834901/qENfWDNvhdacncwA.webp";
@@ -61,6 +63,24 @@ export default function Home() {
               <h2 id="intro-title">From first serve to final point, start with the right court.</h2>
             </div>
             <p className="intro-copy">St. George has one of the deepest mixes of pickleball facilities in Utah. This directory separates free public courts from memberships, paid play, and private community access so you can make a better plan before you leave.</p>
+          </div>
+        </section>
+
+        <section className="home-events" aria-labelledby="home-events-title">
+          <div className="container">
+            <div className="home-events__heading">
+              <div>
+                <p className="eyebrow">TOURNAMENT SEASON · OCTOBER 2026</p>
+                <h2 id="home-events-title">The biggest pickleball weeks of the year.</h2>
+              </div>
+              <div>
+                <p>Start with confirmed dates, venue links, spectator notes, and a clear warning wherever the official schedule is still moving.</p>
+                <Link href="/events" className="text-link">View all events <ArrowUpRight aria-hidden="true" /></Link>
+              </div>
+            </div>
+            <div className="event-card-grid">
+              {events.map((event, index) => <EventCard key={event.slug} event={event} index={index} />)}
+            </div>
           </div>
         </section>
 

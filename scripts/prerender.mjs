@@ -22,16 +22,54 @@ const venues = [
   ["vintage-home-owners-association", "Vintage Home Owners Association", "875 W Rio Virgin Drive, St. George, UT 84790", 2, "Setting not confirmed", "Private community; members only", "Members only"],
 ];
 
+const events = [
+  {
+    slug: "huntsman-world-senior-games-pickleball-2026",
+    name: "Huntsman World Senior Games — Pickleball",
+    shortName: "Huntsman Games Pickleball",
+    dateLabel: "Games: October 5–17, 2026 · Pickleball: October 12–17 (preliminary)",
+    cardDate: "OCT 5–17 · PICKLEBALL OCT 12–17",
+    locationName: "Little Valley Pickleball Complex",
+    locationAddress: "2330 Horseman Park Drive, St. George, UT 84790",
+    organizer: "Huntsman World Senior Games",
+    startDate: "2026-10-12",
+    endDate: "2026-10-17",
+    summary: "A marquee week inside St. George’s 43-sport international celebration of athletes age 50 and over.",
+    description: "Plan for 2026 Huntsman World Senior Games pickleball in St. George: preliminary dates, venues, spectator guidance, parking notes, and official schedule links.",
+    schemaDescription: "The 2026 pickleball competition at the Huntsman World Senior Games, an international 43-sport event for athletes age 50 and over in St. George, Utah.",
+    officialUrl: "https://seniorgames.net/sports/pickleball",
+    body: "The Huntsman World Senior Games brings athletes age 50 and over to greater St. George for two weeks of competition across 43 sports. Pickleball is a signature draw, with age singles, age doubles, mixed doubles, and skill-level doubles listed at Little Valley and SunRiver. The official October 12–17 pickleball schedule is preliminary and subject to change.",
+  },
+  {
+    slug: "fall-brawl-pickleball-2026",
+    name: "City of St. George Fall Brawl",
+    shortName: "Fall Brawl",
+    dateLabel: "October 6–10, 2026",
+    cardDate: "OCT 6–10 · LITTLE VALLEY",
+    locationName: "Little Valley Pickleball Complex",
+    locationAddress: "2330 Horseman Park Drive, St. George, UT 84790",
+    organizer: "City of St. George",
+    startDate: "2026-10-06",
+    endDate: "2026-10-10",
+    summary: "The Original Fall Brawl brings a nationally significant amateur field to Little Valley’s 33 courts.",
+    description: "Plan for the 2026 St. George Fall Brawl pickleball tournament at Little Valley, with confirmed dates, registration links, venue guidance, and schedule notes.",
+    schemaDescription: "The City of St. George Fall Brawl pickleball tournament at Little Valley Pickleball Complex, a major amateur event drawing more than 1,000 participants.",
+    officialUrl: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php",
+    body: "The City of St. George schedules Fall Brawl (The Original) for October 6–10 at Little Valley Pickleball Complex. City-reported figures cited in the local venue research describe a field of more than 1,000 participants and a place among the five largest amateur pickleball tournaments in the country. Check the live registration platform for divisions, fees, and event-day details.",
+  },
+];
+
 function escapeHtml(value) {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
-function setHead(html, { title, description, canonical, schema, robots = "index, follow" }) {
+function setHead(html, { title, description, canonical, schema, robots = "index, follow", ogType = "website" }) {
   return html
     .replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(title)}</title>`)
     .replace(/<meta name="description" content=".*?" \/>/s, `<meta name="description" content="${escapeHtml(description)}" />`)
     .replace(/<meta property="og:title" content=".*?" \/>/s, `<meta property="og:title" content="${escapeHtml(title)}" />`)
     .replace(/<meta property="og:description" content=".*?" \/>/s, `<meta property="og:description" content="${escapeHtml(description)}" />`)
+    .replace(/<meta property="og:type" content=".*?" \/>/s, `<meta property="og:type" content="${ogType}" />`)
     .replace(/<meta property="og:url" content=".*?" \/>/s, `<meta property="og:url" content="${canonical}" />`)
     .replace(/<meta name="robots" content=".*?" \/>/s, `<meta name="robots" content="${robots}" />`)
     .replace(/<link rel="canonical" href=".*?" \/>/s, `<link rel="canonical" href="${canonical}" />`)
@@ -39,13 +77,31 @@ function setHead(html, { title, description, canonical, schema, robots = "index,
 }
 
 function shell(main) {
-  return `<div class="site-shell"><header class="site-header"><div class="container site-header__inner"><a class="brand" href="/"><span class="brand__mark">SG</span><span class="brand__type">St. George <em>Pickleball</em></span></a></div></header>${main}</div>`;
+  return `<div class="site-shell"><header class="site-header"><div class="container site-header__inner"><a class="brand" href="/"><span class="brand__mark">SG</span><span class="brand__type">St. George <em>Pickleball</em></span></a><nav aria-label="Primary navigation"><a href="/#court-directory">Court directory</a><a href="/events">Tournaments &amp; Events</a></nav></div></header>${main}</div>`;
 }
 
-const homeDescription = "Find public courts, indoor clubs, paid facilities, and private pickleball venues in St. George, Utah, with addresses, access details, court counts, and maps.";
+function writeCleanRoute(route, html) {
+  const dir = path.join(outDir, ...route.split("/").filter(Boolean));
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
+  const pieces = route.split("/").filter(Boolean);
+  const filename = `${pieces.pop()}.html`;
+  fs.writeFileSync(path.join(outDir, ...pieces, filename), html);
+}
+
+function placeholder(name) {
+  return `<div class="venue-placeholder venue-placeholder--hero event-placeholder event-placeholder--hero" role="img" aria-label="${escapeHtml(name)} editorial photography placeholder"><div class="venue-placeholder__copy"><span>2026 ST. GEORGE EVENT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div>`;
+}
+
+function eventCard(event, index) {
+  return `<article class="event-card"><a class="event-card__media" href="/events/${event.slug}"><div class="venue-placeholder venue-placeholder--signage event-placeholder event-placeholder--card"><div class="venue-placeholder__copy"><span>2026 ST. GEORGE EVENT GUIDE</span><strong>${escapeHtml(event.shortName)}</strong></div></div></a><div class="event-card__body"><div class="event-card__index">${String(index + 1).padStart(2, "0")}</div><div><p class="eyebrow">${escapeHtml(event.cardDate)}</p><h3><a href="/events/${event.slug}">${escapeHtml(event.name)}</a></h3><p>${escapeHtml(event.summary)}</p><a class="text-link" href="/events/${event.slug}">Plan your visit →</a></div></div></article>`;
+}
+
+const homeDescription = "Find public courts, indoor clubs, paid facilities, private venues, and major pickleball events in St. George, Utah, with practical local guidance.";
 const homeSchema = { "@context": "https://schema.org", "@type": "WebSite", name: "St. George Pickleball", url: siteUrl, description: homeDescription };
+const homeEvents = events.map(eventCard).join("");
 const homeList = venues.map(([slug, name, address, courts, setting, access], index) => `<a class="venue-row" href="/venues/${slug}"><span class="venue-row__number">${String(index + 1).padStart(2, "0")}</span><span class="venue-row__main"><strong>${escapeHtml(name)}</strong><span>${escapeHtml(address)}</span></span><span class="venue-row__fact"><small>Courts</small><strong>${courts}</strong></span><span class="venue-row__fact venue-row__fact--setting"><small>Setting</small><strong>${escapeHtml(setting)}</strong></span><span class="venue-row__access">${escapeHtml(access)}</span></a>`).join("");
-const homeMain = `<main><section class="intro-section"><div class="container"><p class="eyebrow">THE LOCAL COURT FIELD GUIDE</p><h1 style="font-family:Fraunces,serif;font-size:clamp(3rem,8vw,7rem);line-height:.95;max-width:1000px">Where to Play Pickleball in St. George</h1><p class="intro-copy">Public parks, indoor clubs, resort courts, and community facilities—organized in one clear local guide.</p></div></section><section class="directory-section" id="court-directory"><div class="container"><div class="directory-heading"><div><p class="eyebrow">12 KNOWN VENUES · ST. GEORGE, UTAH</p><h2>Where to Play Pickleball in St. George</h2></div></div><div class="venue-index">${homeList}</div></div></section></main>`;
+const homeMain = `<main><section class="intro-section"><div class="container"><p class="eyebrow">THE LOCAL COURT FIELD GUIDE</p><h1 style="font-family:Fraunces,serif;font-size:clamp(3rem,8vw,7rem);line-height:.95;max-width:1000px">Where to Play Pickleball in St. George</h1><p class="intro-copy">Public parks, indoor clubs, resort courts, and community facilities—organized in one clear local guide.</p></div></section><section class="home-events"><div class="container"><div class="home-events__heading"><div><p class="eyebrow">TOURNAMENT SEASON · OCTOBER 2026</p><h2>The biggest pickleball weeks of the year.</h2></div></div><div class="event-card-grid">${homeEvents}</div></div></section><section class="directory-section" id="court-directory"><div class="container"><div class="directory-heading"><div><p class="eyebrow">12 KNOWN VENUES · ST. GEORGE, UTAH</p><h2>Where to Play Pickleball in St. George</h2></div></div><div class="venue-index">${homeList}</div></div></section></main>`;
 fs.writeFileSync(path.join(outDir, "index.html"), setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(homeMain)}</div>`), { title: "Where to Play Pickleball in St. George, Utah", description: homeDescription, canonical: `${siteUrl}/`, schema: homeSchema }));
 
 for (const [slug, name, address, courts, setting, access, fee] of venues) {
@@ -62,13 +118,40 @@ for (const [slug, name, address, courts, setting, access, fee] of venues) {
     priceRange: fee,
   };
   const main = `<main class="venue-page"><section class="venue-masthead"><div class="container"><a class="back-link" href="/#court-directory">← All St. George courts</a><div class="venue-masthead__title"><p class="eyebrow">ST. GEORGE, UTAH</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div><div class="venue-placeholder venue-placeholder--hero" role="img" aria-label="${escapeHtml(name)} photography placeholder"><div class="venue-placeholder__copy"><span>ST. GEORGE COURT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div></div></section><section class="venue-details"><div class="container venue-details__grid"><div class="venue-details__main"><p class="eyebrow">THE ESSENTIALS</p><h2>Plan your visit</h2><div class="address-block"><div><small>ADDRESS</small><address>${escapeHtml(address)}</address></div></div><div class="hours-block"><div><small>HOURS</small><p>Confirm current hours before visiting</p></div></div></div><aside class="facts-panel"><div class="fact"><span>Court count</span><strong>${courts}</strong></div><div class="fact"><span>Indoor / outdoor</span><strong>${escapeHtml(setting)}</strong></div><div class="fact"><span>Fee / membership</span><strong>${escapeHtml(fee)}</strong></div><div class="fact"><span>Access</span><strong>${escapeHtml(access)}</strong></div></aside></div></section></main>`;
-  const dir = path.join(outDir, "venues", String(slug));
-  fs.mkdirSync(dir, { recursive: true });
-  const venueHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title, description, canonical, schema });
-  fs.writeFileSync(path.join(dir, "index.html"), venueHtml);
-  fs.writeFileSync(path.join(outDir, "venues", `${slug}.html`), venueHtml);
+  const venueHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title, description, canonical, schema, ogType: "place" });
+  writeCleanRoute(`/venues/${slug}`, venueHtml);
+}
+
+const hubTitle = "Pickleball Tournaments & Events in St. George, Utah";
+const hubDescription = "Plan for St. George’s biggest 2026 pickleball events: Huntsman World Senior Games pickleball and the City of St. George Fall Brawl.";
+const hubMain = `<main class="events-page"><section class="events-masthead"><div class="container"><a class="back-link" href="/">← Home</a><div class="events-masthead__grid"><div><p class="eyebrow">TOURNAMENTS &amp; EVENTS · 2026</p><h1>Two defining weeks on St. George courts.</h1></div><p>Dates, venues, official links, and practical guidance for the two pickleball events that shape October in St. George.</p></div></div></section><section class="events-index"><div class="container"><div class="events-index__heading"><p class="eyebrow">THE 2026 EVENT FIELD GUIDE</p><h2>Choose an event</h2><p>Each guide separates confirmed details from preliminary or unpublished information. Always use the official schedule for final travel decisions.</p></div><div class="event-card-grid">${homeEvents}</div></div></section></main>`;
+const hubHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(hubMain)}</div>`), { title: hubTitle, description: hubDescription, canonical: `${siteUrl}/events`, schema: homeSchema });
+writeCleanRoute("/events", hubHtml);
+
+for (const event of events) {
+  const canonical = `${siteUrl}/events/${event.slug}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.name,
+    startDate: event.startDate,
+    endDate: event.endDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    description: event.schemaDescription,
+    url: canonical,
+    location: {
+      "@type": "Place",
+      name: event.locationName,
+      address: { "@type": "PostalAddress", streetAddress: event.locationAddress.split(",")[0], addressLocality: "St. George", addressRegion: "UT", postalCode: event.locationAddress.match(/\b\d{5}\b/)?.[0], addressCountry: "US" },
+    },
+    organizer: { "@type": "Organization", name: event.organizer, url: event.officialUrl },
+  };
+  const main = `<main class="event-page"><section class="event-masthead"><div class="container"><a class="back-link" href="/events">← All tournaments &amp; events</a><div class="event-masthead__title"><p class="eyebrow">ST. GEORGE, UTAH · 2026</p><h1>${escapeHtml(event.name)}</h1><p>${escapeHtml(event.dateLabel)}</p></div>${placeholder(event.shortName)}</div></section><section class="event-overview"><div class="container event-overview__grid"><div class="event-story"><p class="eyebrow">THE EVENT</p><h2>What it is—and why it matters.</h2><p>${escapeHtml(event.body)}</p></div><aside class="event-facts"><div class="event-fact"><div><span>DATES</span><strong>${escapeHtml(event.dateLabel)}</strong></div></div><div class="event-fact"><div><span>PRIMARY VENUE</span><a href="/venues/little-valley-pickleball-complex">${escapeHtml(event.locationName)}</a><small>${escapeHtml(event.locationAddress)}</small></div></div><a class="primary-link" href="${event.officialUrl}">Official event page →</a></aside></div></section><section class="schedule-section"><div class="container"><div class="schedule-heading"><div><p class="eyebrow">SCHEDULE AT A GLANCE</p><h2>Build a plan, then check it.</h2></div><div class="status-note"><strong>Check official schedule</strong><p>Registration availability, match assignments, and event-day logistics can change after publication.</p></div></div></div></section></main>`;
+  const eventHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title: `${event.name} 2026 | St. George, Utah`, description: event.description, canonical, schema, ogType: "article" });
+  writeCleanRoute(`/events/${event.slug}`, eventHtml);
 }
 
 const notFound = setHead(baseHtml, { title: "Page Not Found | St. George Pickleball", description: "The requested page could not be found.", canonical: `${siteUrl}/404`, schema: homeSchema, robots: "noindex, nofollow" });
 fs.writeFileSync(path.join(outDir, "404.html"), notFound);
-console.log(`Pre-rendered homepage and ${venues.length} venue pages.`);
+console.log(`Pre-rendered homepage, events hub, ${events.length} event pages, and ${venues.length} venue pages.`);

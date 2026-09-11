@@ -11,7 +11,8 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
             <span className="brand__type">St. George <em>Pickleball</em></span>
           </Link>
           <nav aria-label="Primary navigation">
-            <a href="/#court-directory">Court directory</a>
+            <a href="/#court-directory"><span className="nav-label--desktop">Court directory</span><span className="nav-label--mobile">Courts</span></a>
+            <Link href="/events"><span className="nav-label--desktop">Tournaments & Events</span><span className="nav-label--mobile">Events</span></Link>
           </nav>
         </div>
       </header>
@@ -23,7 +24,8 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
             <h2>Play well. Know before you go.</h2>
           </div>
           <div className="site-footer__aside">
-            <p>Venue details can change. For special trips, confirm current hours and access directly with the venue.</p>
+            <p>Venue and event details can change. For special trips, confirm current hours, access, and schedules with the official organizer.</p>
+            <Link href="/events">Tournaments & Events</Link>
             <a href="/sitemap.xml">Sitemap</a>
           </div>
         </div>

@@ -2,9 +2,11 @@
 
 ## Scope delivered in code
 
-This build contains the Priority 1.A court directory and the code-based parts of Priority 1.C only. It includes the homepage directory, 12 individual venue pages, embedded maps, titles and descriptions, canonical URLs, `LocalBusiness` and `SportsActivityLocation` structured data, `robots.txt`, and `sitemap.xml`.
+The live foundation contains the Priority 1.A court directory and the code-based parts of Priority 1.C. It includes the homepage directory, 12 individual venue pages, embedded maps, titles and descriptions, canonical URLs, `LocalBusiness` and `SportsActivityLocation` structured data, `robots.txt`, and `sitemap.xml`.
 
-Black Desert Resort, tournament and event pages, email capture, and contact or sponsor forms are intentionally excluded.
+Priority 1.B adds a tournaments and events hub, dedicated 2026 Huntsman World Senior Games pickleball and Fall Brawl pages, site-wide navigation, a prominent homepage event section, and `Event` structured data on both event pages.
+
+Black Desert Resort, email capture, lead magnets, and contact or sponsor forms remain intentionally excluded.
 
 ## Data gaps retained from the supplied source
 
@@ -27,10 +29,18 @@ No missing fact was invented. The public pages use direct “confirm before visi
 
 ## Photography
 
-The homepage uses one genuine, licensed Unsplash landscape photograph by Ivy Tang as a non-venue-specific atmosphere image. Every venue page includes three deliberate title-card image slots matching the required wide, detail, and signage formats. No venue image is AI-generated and no placeholder says “coming soon.”
+The homepage uses one genuine, licensed Unsplash landscape photograph by Ivy Tang as a non-venue-specific atmosphere image. Every venue page includes three deliberate title-card image slots matching the required wide, detail, and signage formats. The new event pages and cards use the same intentional geometric court-title treatment until confirmed event photography is available. No named venue or event image is AI-generated and no placeholder says “coming soon.”
+
+## Priority 1.B source and schedule gaps
+
+The official Huntsman Games site confirms the overall October 5–17, 2026 dates and currently lists pickleball competition for October 12–17 at Little Valley and SunRiver. That schedule is marked preliminary. The official pickleball page also contradicts itself on open practice, listing October 11 in the daily schedule and October 12 later on the same page. The live page calls out the conflict and sends visitors to the official schedule rather than choosing a date.
+
+The City of St. George confirms Fall Brawl for October 6–10 and links to the live registration platform. The City page does not publish a complete day-by-day division schedule, separate spectator policy, or Fall Brawl parking plan. The event page does not invent those details.
+
+Neither official source published a dependable pickleball-specific spectator parking plan when checked September 11, 2026. Both event pages use “check official schedule” guidance for unpublished or changeable logistics.
 
 ## Measurement and indexing setup
 
-The GA4 property **St. George Pickleball** was created under account **BeLeish's Websites!** with property ID `553881285`. Its web stream is **St. George Pickleball Website**, stream ID `15762683558`, and Measurement ID `G-WK2H2059DE`. The site tag includes route-aware page tracking for the homepage and venue pages.
+The GA4 property **St. George Pickleball** was created under account **BeLeish's Websites!** with property ID `553881285`. Its web stream is **St. George Pickleball Website**, stream ID `15762683558`, and Measurement ID `G-WK2H2059DE`. The site tag includes route-aware page tracking for the homepage, venue pages, event hub, and event pages.
 
-The Search Console Domain property still requires DNS verification before its sitemap can be submitted. The sitemap is live at `https://www.stgeorgepickleball.com/sitemap.xml`.
+The Search Console Domain property is verified. The sitemap is live at `https://www.stgeorgepickleball.com/sitemap.xml`; sitemap submission remains an owner-controlled Search Console step because connected browser access is disabled.
