@@ -31,4 +31,6 @@ The homepage uses one genuine, licensed Unsplash landscape photograph by Ivy Tan
 
 ## Measurement and indexing setup
 
-GA4 code has not been added because the owner asked to confirm whether a property already exists before implementation. Search Console ownership and sitemap submission also require confirmation of the existing Domain property. The sitemap is available at `https://stgeorgepickleball.com/sitemap.xml` once deployed.
+The GA4 property **St. George Pickleball** was created under account **BeLeish's Websites!** with property ID `553881285`. Its web stream is **St. George Pickleball Website**, stream ID `15762683558`, and Measurement ID `G-WK2H2059DE`. The site tag includes route-aware page tracking for the homepage and venue pages.
+
+The Search Console Domain property still requires DNS verification before its sitemap can be submitted. The sitemap is live at `https://www.stgeorgepickleball.com/sitemap.xml`.

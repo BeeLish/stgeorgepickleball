@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { Venue } from "@/data/venues";
 
-const SITE_URL = "https://stgeorgepickleball.com";
+const SITE_URL = "https://www.stgeorgepickleball.com";
 
 function upsertMeta(selector: string, attributes: Record<string, string>) {
   let element = document.head.querySelector<HTMLMetaElement>(selector);

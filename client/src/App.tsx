@@ -1,6 +1,7 @@
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import Home from "./pages/Home";
 import VenuePage from "./pages/VenuePage";
 
@@ -18,6 +19,7 @@ function Router() {
 export default function App() {
   return (
     <ErrorBoundary>
+      <GoogleAnalytics />
       <Router />
     </ErrorBoundary>
   );

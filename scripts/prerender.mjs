@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "dist", "public");
 const baseHtml = fs.readFileSync(path.join(outDir, "index.html"), "utf8");
-const siteUrl = "https://stgeorgepickleball.com";
+const siteUrl = "https://www.stgeorgepickleball.com";
 
 const venues = [
   ["little-valley-pickleball-complex", "Little Valley Pickleball Complex", "2330 Horseman Park Drive, St. George, UT 84790", 33, "Outdoor", "Free and open to the public", "Free"],
