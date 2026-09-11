@@ -1,25 +1,136 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { useMemo, useState } from "react";
+import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
+import { Link } from "wouter";
+import PageMeta from "@/components/PageMeta";
+import SiteLayout from "@/components/SiteLayout";
+import { venues, type AccessKind } from "@/data/venues";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
+const HERO_IMAGE = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663043834901/qENfWDNvhdacncwA.webp";
+
+type Filter = "all" | AccessKind | "indoor";
+
+const filters: { value: Filter; label: string }[] = [
+  { value: "all", label: "All venues" },
+  { value: "free", label: "Free & public" },
+  { value: "indoor", label: "Indoor play" },
+  { value: "membership", label: "Membership" },
+  { value: "paid", label: "Pay to play" },
+  { value: "private", label: "Private communities" },
+];
+
+function venueMatchesFilter(filter: Filter, setting: string, accessKind: AccessKind) {
+  if (filter === "all") return true;
+  if (filter === "indoor") return setting.toLowerCase().includes("indoor");
+  return accessKind === filter;
+}
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [filter, setFilter] = useState<Filter>("all");
+  const visibleVenues = useMemo(
+    () => venues.filter((venue) => venueMatchesFilter(filter, venue.setting, venue.accessKind)),
+    [filter],
+  );
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <SiteLayout>
+      <PageMeta
+        title="Where to Play Pickleball in St. George, Utah"
+        description="Find public courts, indoor clubs, paid facilities, and private pickleball venues in St. George, Utah, with addresses, access details, court counts, and maps."
+        path="/"
+      />
+
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <section className="home-hero" style={{ backgroundImage: `url(${HERO_IMAGE})` }}>
+          <div className="home-hero__overlay" />
+          <div className="container home-hero__content">
+            <p className="eyebrow eyebrow--light">THE LOCAL COURT FIELD GUIDE</p>
+            <h1>Where to Play Pickleball in St. George</h1>
+            <p className="home-hero__lede">Public parks, indoor clubs, resort courts, and community facilities—organized in one clear local guide.</p>
+            <a className="hero-link" href="#court-directory">
+              Explore all courts <ArrowDown aria-hidden="true" />
+            </a>
+          </div>
+          <span className="photo-credit">Landscape photograph by Ivy Tang / Unsplash</span>
+        </section>
+
+        <section className="intro-section" aria-labelledby="intro-title">
+          <div className="container intro-grid">
+            <p className="section-number" aria-hidden="true">01</p>
+            <div>
+              <p className="eyebrow">A COURT GUIDE BUILT FOR THIS PLACE</p>
+              <h2 id="intro-title">From first serve to final point, start with the right court.</h2>
+            </div>
+            <p className="intro-copy">St. George has one of the deepest mixes of pickleball facilities in Utah. This directory separates free public courts from memberships, paid play, and private community access so you can make a better plan before you leave.</p>
+          </div>
+        </section>
+
+        <section className="directory-section" id="court-directory" aria-labelledby="directory-title">
+          <div className="container">
+            <div className="directory-heading">
+              <div>
+                <p className="eyebrow">12 KNOWN VENUES · ST. GEORGE, UTAH</p>
+                <h2 id="directory-title">Where to Play Pickleball in St. George</h2>
+              </div>
+              <p>Choose a venue for court count, access, hours guidance, address, and a map.</p>
+            </div>
+
+            <div className="filters" role="group" aria-label="Filter venues">
+              {filters.map((item) => (
+                <button
+                  key={item.value}
+                  type="button"
+                  className={filter === item.value ? "is-active" : ""}
+                  aria-pressed={filter === item.value}
+                  onClick={() => setFilter(item.value)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="venue-index" aria-live="polite">
+              {visibleVenues.map((venue) => {
+                const originalIndex = venues.findIndex((item) => item.slug === venue.slug) + 1;
+                return (
+                  <Link key={venue.slug} href={`/venues/${venue.slug}`} className="venue-row">
+                    <span className="venue-row__number">{String(originalIndex).padStart(2, "0")}</span>
+                    <span className="venue-row__main">
+                      <strong>{venue.name}</strong>
+                      <span><MapPin aria-hidden="true" /> {venue.address}</span>
+                    </span>
+                    <span className="venue-row__fact">
+                      <small>Courts</small>
+                      <strong>{venue.courts}</strong>
+                    </span>
+                    <span className="venue-row__fact venue-row__fact--setting">
+                      <small>Setting</small>
+                      <strong>{venue.setting}</strong>
+                    </span>
+                    <span className="venue-row__access">{venue.access}</span>
+                    <ArrowUpRight className="venue-row__arrow" aria-hidden="true" />
+                  </Link>
+                );
+              })}
+              {visibleVenues.length === 0 && <p className="empty-state">No venues match that filter.</p>}
+            </div>
+          </div>
+        </section>
+
+        <section className="field-note-section">
+          <div className="container field-note-grid">
+            <div className="field-note-art" aria-hidden="true">
+              <span className="field-note-art__ball" />
+              <span className="field-note-art__line" />
+              <span className="field-note-art__line field-note-art__line--short" />
+            </div>
+            <div>
+              <p className="eyebrow">FIELD NOTE</p>
+              <h2>Public, paid, member, or private?</h2>
+              <p>Those distinctions matter here. A beautiful court is not useful if you cannot get through the gate. Every venue page puts access and fees next to the court count—not buried in fine print.</p>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+    </SiteLayout>
   );
 }
