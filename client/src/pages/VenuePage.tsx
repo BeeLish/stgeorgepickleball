@@ -16,8 +16,8 @@ export default function VenuePage() {
   const index = venues.findIndex((item) => item.slug === venue.slug) + 1;
   const locality = venue.locality ?? "St. George";
   const courtCountDescription = venue.courts === null ? "court count not confirmed" : `${venue.courts} court${venue.courts === 1 ? "" : "s"}`;
-  const pageTitle = venue.name.endsWith("Pickleball")
-    ? `${venue.name} Courts | ${locality}, Utah`
+  const pageTitle = /Pickleball(?: Courts)?$/.test(venue.name)
+    ? `${venue.name}${venue.name.endsWith(" Courts") ? "" : " Courts"} | ${locality}, Utah`
     : `${venue.name} Pickleball Courts | ${locality}, Utah`;
 
   return (
