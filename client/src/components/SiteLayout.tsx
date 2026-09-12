@@ -7,8 +7,15 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       <header className="site-header">
         <div className="container site-header__inner">
           <Link href="/" className="brand" aria-label="St. George Pickleball home">
-            <span className="brand__mark" aria-hidden="true">SG</span>
-            <span className="brand__type">St. George <em>Pickleball</em></span>
+            <img
+              className="brand__logo"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663043834901/QealZUTZzBUVqsqQ.webp"
+              width="960"
+              height="408"
+              alt=""
+              decoding="async"
+              fetchPriority="high"
+            />
           </Link>
           <nav aria-label="Primary navigation">
             <a href="/#court-directory"><span className="nav-label--desktop">Court directory</span><span className="nav-label--mobile">Courts</span></a>
