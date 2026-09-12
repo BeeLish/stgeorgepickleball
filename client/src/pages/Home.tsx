@@ -88,7 +88,7 @@ export default function Home() {
           <div className="container">
             <div className="directory-heading">
               <div>
-                <p className="eyebrow">20 CURRENT VENUES · 1 COMING SOON · WASHINGTON COUNTY</p>
+                <p className="eyebrow">22 CURRENT VENUES · 1 COMING SOON · WASHINGTON COUNTY</p>
                 <h2 id="directory-title">Where to Play Across Greater St. George</h2>
               </div>
               <p>Choose a venue for court count, access, hours guidance, address, and a map.</p>
