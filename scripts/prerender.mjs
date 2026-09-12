@@ -115,7 +115,9 @@ fs.writeFileSync(path.join(outDir, "index.html"), setHead(baseHtml.replace('<div
 
 for (const [slug, name, address, courts, setting, access, fee, locality = "St. George", postalCode, noStreetAddress = false] of venues) {
   const courtLabel = courts === null ? "court count not confirmed" : `${courts} court${courts === 1 ? "" : "s"}`;
-  const title = `${name} Pickleball Courts | ${locality}, Utah`;
+  const title = String(name).endsWith("Pickleball")
+    ? `${name} Courts | ${locality}, Utah`
+    : `${name} Pickleball Courts | ${locality}, Utah`;
   const description = `${name}: ${courtLabel}, ${String(setting).toLowerCase()}, ${String(access).toLowerCase()}. View the address, hours guidance, and map.`;
   const canonical = `${siteUrl}/venues/${slug}`;
   const schema = {
