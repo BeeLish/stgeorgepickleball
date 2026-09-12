@@ -3,6 +3,10 @@ export type EventSource = {
   url: string;
 };
 
+export type EventInlineLink = EventSource & {
+  external?: boolean;
+};
+
 export type EventScheduleItem = {
   date: string;
   title: string;
@@ -42,6 +46,7 @@ export type PickleballEvent = {
   registrationUrl: string;
   scheduleUrl: string;
   sources: EventSource[];
+  inlineLinks: EventInlineLink[];
 };
 
 export const events: PickleballEvent[] = [
@@ -116,6 +121,13 @@ export const events: PickleballEvent[] = [
       { label: "Official 2026 schedules", url: "https://seniorgames.net/schedules" },
       { label: "Official venue and shuttle guidance", url: "https://seniorgames.net/venues" },
     ],
+    inlineLinks: [
+      { label: "Huntsman World Senior Games", url: "https://seniorgames.net/sports/pickleball", external: true },
+      { label: "official pickleball page", url: "https://seniorgames.net/sports/pickleball", external: true },
+      { label: "official Games site", url: "https://seniorgames.net/sports/pickleball", external: true },
+      { label: "Little Valley Pickleball Complex", url: "/venues/little-valley-pickleball-complex" },
+      { label: "Little Valley", url: "/venues/little-valley-pickleball-complex" },
+    ],
   },
   {
     slug: "fall-brawl-pickleball-2026",
@@ -181,6 +193,17 @@ export const events: PickleballEvent[] = [
     sources: [
       { label: "City of St. George tournament calendar", url: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php" },
       { label: "Little Valley venue guide", url: "/venues/little-valley-pickleball-complex" },
+    ],
+    inlineLinks: [
+      { label: "City of St. George", url: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php", external: true },
+      { label: "City tournament page", url: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php", external: true },
+      { label: "City page", url: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php", external: true },
+      { label: "PickleballTournaments.com", url: "https://pickleballtournaments.com/tournaments/fall-brawl-2026", external: true },
+      { label: "live tournament registration page", url: "https://pickleballtournaments.com/tournaments/fall-brawl-2026", external: true },
+      { label: "live registration platform", url: "https://pickleballtournaments.com/tournaments/fall-brawl-2026", external: true },
+      { label: "registration platform", url: "https://pickleballtournaments.com/tournaments/fall-brawl-2026", external: true },
+      { label: "Little Valley Pickleball Complex", url: "/venues/little-valley-pickleball-complex" },
+      { label: "Little Valley", url: "/venues/little-valley-pickleball-complex" },
     ],
   },
 ];

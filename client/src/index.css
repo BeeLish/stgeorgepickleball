@@ -349,6 +349,9 @@
 .event-story h2, .schedule-heading h2, .planning-heading h2, .official-links-grid h2 { margin: 0 0 2.4rem; max-width: 760px; font-size: clamp(2.6rem, 5vw, 4.8rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; }
 .event-story > p:not(.eyebrow) { max-width: 760px; margin: 0 0 1.25rem; color: #5f5a51; font-size: 1.02rem; line-height: 1.85; }
 .event-story h3 { margin: 4rem 0 1.5rem; font-size: clamp(1.9rem, 3vw, 2.8rem); font-weight: 500; letter-spacing: -.035em; }
+.inline-source-link { color: var(--sage); font-weight: 700; text-decoration: underline; text-decoration-color: #9fac9f; text-decoration-thickness: 1px; text-underline-offset: .2em; transition: color 180ms cubic-bezier(.23,1,.32,1), text-decoration-color 180ms cubic-bezier(.23,1,.32,1); }
+.inline-source-link:hover { color: var(--rust); text-decoration-color: var(--rust); }
+.inline-source-link:focus-visible { border-radius: 2px; outline: 2px solid var(--sage); outline-offset: 3px; }
 .event-facts { border-top: 2px solid var(--charcoal); }
 .event-fact { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
 .event-fact svg { width: 20px; color: var(--rust); }

@@ -1,9 +1,45 @@
+import { Fragment, type ReactNode } from "react";
 import { ArrowLeft, ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 import { Link, Redirect, useParams } from "wouter";
 import EventPhotoPlaceholder from "@/components/EventPhotoPlaceholder";
 import PageMeta from "@/components/PageMeta";
 import SiteLayout from "@/components/SiteLayout";
-import { eventBySlug } from "@/data/events";
+import { eventBySlug, type PickleballEvent } from "@/data/events";
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function renderLinkedText(text: string, event: PickleballEvent): ReactNode {
+  const links = event.inlineLinks
+    .filter(({ label }) => text.includes(label))
+    .sort((a, b) => b.label.length - a.label.length);
+
+  if (!links.length) return text;
+
+  const pattern = new RegExp(`(${links.map(({ label }) => escapeRegExp(label)).join("|")})`, "g");
+
+  return text.split(pattern).map((part, index) => {
+    const match = links.find(({ label }) => label === part);
+    if (!match) return <Fragment key={`${part}-${index}`}>{part}</Fragment>;
+
+    return match.external ? (
+      <a
+        className="inline-source-link"
+        href={match.url}
+        target="_blank"
+        rel="noreferrer"
+        key={`${match.label}-${index}`}
+      >
+        {match.label}
+      </a>
+    ) : (
+      <Link className="inline-source-link" href={match.url} key={`${match.label}-${index}`}>
+        {match.label}
+      </Link>
+    );
+  });
+}
 
 export default function EventPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -37,9 +73,9 @@ export default function EventPage() {
             <div className="event-story">
               <p className="eyebrow">THE EVENT</p>
               <h2>What it is—and why it matters.</h2>
-              {event.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {event.overview.map((paragraph) => <p key={paragraph}>{renderLinkedText(paragraph, event)}</p>)}
               <h3>Why this week matters</h3>
-              {event.whyItMatters.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {event.whyItMatters.map((paragraph) => <p key={paragraph}>{renderLinkedText(paragraph, event)}</p>)}
             </div>
             <aside className="event-facts" aria-label="Event essentials">
               <div className="event-fact">
@@ -74,7 +110,7 @@ export default function EventPage() {
               </div>
               <div className="status-note">
                 <strong>Schedule status</strong>
-                <p>{event.statusNote}</p>
+                <p>{renderLinkedText(event.statusNote, event)}</p>
                 <a href={event.scheduleUrl} target="_blank" rel="noreferrer">Check official schedule <ArrowUpRight aria-hidden="true" /></a>
               </div>
             </div>
@@ -83,7 +119,7 @@ export default function EventPage() {
                 <div className={item.needsOfficialCheck ? "schedule-row schedule-row--check" : "schedule-row"} key={`${item.date}-${item.title}`}>
                   <span>{item.date}</span>
                   <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
+                  <p>{renderLinkedText(item.detail, event)}</p>
                 </div>
               ))}
             </div>
@@ -102,8 +138,8 @@ export default function EventPage() {
                   <span className="planning-row__number">{item.number}</span>
                   <p className="eyebrow">{item.label}</p>
                   <div>
-                    <h3>{item.title}</h3>
-                    {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <h3>{renderLinkedText(item.title, event)}</h3>
+                    {item.paragraphs.map((paragraph) => <p key={paragraph}>{renderLinkedText(paragraph, event)}</p>)}
                   </div>
                 </article>
               ))}
