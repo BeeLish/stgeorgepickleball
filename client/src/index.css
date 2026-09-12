@@ -249,6 +249,14 @@
 .venue-row__arrow { width: 18px; color: var(--sage); transition: transform 180ms cubic-bezier(.23,1,.32,1); }
 .venue-row:hover .venue-row__arrow { transform: translate(3px, -3px); }
 .empty-state { margin: 0; padding: 3rem 0; color: #6d675e; }
+.coming-soon-listing { display: grid; grid-template-columns: minmax(240px, .65fr) minmax(0, 1fr); gap: clamp(2rem, 7vw, 7rem); margin-top: 3.5rem; padding: 2.5rem; border-top: 3px solid var(--rust); background: var(--sand-light); }
+.coming-soon-listing .eyebrow { margin-bottom: 1rem; }
+.coming-soon-listing h3 { margin: 0; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
+.coming-soon-listing > div:last-child > strong { color: var(--rust); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.coming-soon-listing p:not(.eyebrow) { max-width: 680px; margin: 1rem 0 1.35rem; color: #615c53; line-height: 1.75; }
+.coming-soon-listing a { display: inline-flex; align-items: center; gap: .5rem; color: var(--sage); font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+.coming-soon-listing a:hover { color: var(--rust); }
+.coming-soon-listing a svg { width: 16px; }
 
 .field-note-section { background: var(--rust); color: white; padding: 8rem 0; }
 .field-note-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(0, 1fr); gap: clamp(3rem, 9vw, 9rem); align-items: center; }
@@ -427,6 +435,7 @@
   .map-heading { display: grid; }.map-frame { height: 410px; }
   .photo-grid { grid-template-columns: 1fr; }.venue-placeholder--detail { max-width: 76%; }.venue-placeholder--signage { margin-left: 14%; }
   .home-events__heading, .events-index__heading, .planning-heading { grid-template-columns: 1fr; gap: 1.5rem; }.events-index__heading .eyebrow { grid-column: 1; }
+  .coming-soon-listing { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
   .event-card-grid { grid-template-columns: 1fr; gap: 3.5rem; }.event-card__body { grid-template-columns: 30px minmax(0, 1fr); gap: .8rem; }
   .events-masthead { padding-top: 2rem; padding-bottom: 5.5rem; }.events-masthead__grid { padding-top: 4rem; }
   .event-masthead { padding-top: 2rem; }.event-masthead__title { padding-top: 3.6rem; padding-bottom: 2.5rem; }.event-placeholder--hero { aspect-ratio: 5 / 4; }

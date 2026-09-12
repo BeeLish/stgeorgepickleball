@@ -15,6 +15,8 @@ function upsertMeta(selector: string, attributes: Record<string, string>) {
 }
 
 function buildVenueSchema(venue: Venue) {
+  const streetAddress = venue.streetAddress === null ? undefined : venue.streetAddress ?? venue.address.split(",")[0];
+
   return {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "SportsActivityLocation"],
@@ -23,10 +25,10 @@ function buildVenueSchema(venue: Venue) {
     url: `${SITE_URL}/venues/${venue.slug}`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: venue.address.split(",")[0],
-      addressLocality: "St. George",
+      streetAddress,
+      addressLocality: venue.locality ?? "St. George",
       addressRegion: "UT",
-      postalCode: venue.address.match(/\b\d{5}\b/)?.[0] ?? "",
+      postalCode: venue.postalCode ?? venue.address.match(/\b\d{5}\b/)?.[0],
       addressCountry: "US",
     },
     telephone: venue.phone,

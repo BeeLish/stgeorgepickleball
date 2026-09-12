@@ -2,7 +2,7 @@
 
 ## Scope delivered in code
 
-The live foundation contains the Priority 1.A court directory and the code-based parts of Priority 1.C. It includes the homepage directory, 12 individual venue pages, embedded maps, titles and descriptions, canonical URLs, `LocalBusiness` and `SportsActivityLocation` structured data, `robots.txt`, and `sitemap.xml`.
+The live foundation contains the Priority 1.A court directory and the code-based parts of Priority 1.C. It includes the homepage directory, 20 individual venue pages across Washington County, embedded maps, titles and descriptions, canonical URLs, `LocalBusiness` and `SportsActivityLocation` structured data, `robots.txt`, and `sitemap.xml`.
 
 Priority 1.B adds a tournaments and events hub, dedicated 2026 Huntsman World Senior Games pickleball and Fall Brawl pages, site-wide navigation, a prominent homepage event section, and `Event` structured data on both event pages.
 
@@ -26,6 +26,18 @@ No missing fact was invented. The public pages use direct “confirm before visi
 | Green Spring Park | Indoor/outdoor setting and hours not supplied | Setting says not confirmed; hours direct visitors to confirm |
 | Larkspur Park | Indoor/outdoor setting and hours not supplied | Setting says not confirmed; hours direct visitors to confirm |
 | Vintage Home Owners Association | Indoor/outdoor setting and hours not supplied | Treats it as private; setting says not confirmed; hours direct visitors to the association |
+| Sullivan Virgin River Park | Source marks the entire listing for verification; hours not supplied | Publishes the supplied address and six outdoor courts; hours direct visitors to confirm |
+| Shooting Star Park | Indoor/outdoor setting, hours, and amenities not supplied | Publishes the supplied address, two courts, free access, and permanent nets; other facts remain unconfirmed |
+| Boiler Park | Indoor/outdoor setting, hours, and amenities not supplied | Publishes the supplied address, four courts, free access, and permanent nets; other facts remain unconfirmed |
+| Archie H. Gubler Park | Indoor/outdoor setting, hours, and amenities not supplied | Publishes the supplied address, six courts, free access, and permanent nets; other facts remain unconfirmed |
+| The Palisades | Indoor/outdoor setting, hours, and guest policy not supplied | States membership required and directs visitors to confirm guest access and hours |
+| Kayenta Pickleball | Court count, indoor/outdoor setting, hours, and guest policy unconfirmed | Displays “Not confirmed” for court count and does not invent missing facts |
+| Dixie Springs Park | Two supplied street addresses conflict; indoor/outdoor setting and hours unconfirmed | Publishes no street address, explains the conflict, and uses only the park name plus Hurricane for map search |
+| Town of Springdale Community Park | Indoor/outdoor setting, hours, and amenities not supplied | Publishes the supplied address, four courts, free access, and permanent nets; other facts remain unconfirmed |
+
+The source’s **Hurricane Pickleball Courts / Hurricane Indoor Courts** entry is excluded from the homepage, routes, pre-rendered pages, and sitemap because the source conflicts on whether it represents one facility or two. No listing will be published until Brian confirms it directly.
+
+The Pickle Pad appears only as a distinct homepage status notice labeled **“Opening soon — not yet open.”** It has no venue page, address, hours, pricing, or court count. Its only action links to `thepicklepad.com` for current status.
 
 ## Photography
 

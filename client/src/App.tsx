@@ -2,6 +2,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import ScrollToTop from "./components/ScrollToTop";
 import EventPage from "./pages/EventPage";
 import EventsHub from "./pages/EventsHub";
 import Home from "./pages/Home";
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <GoogleAnalytics />
+      <ScrollToTop />
       <Router />
     </ErrorBoundary>
   );

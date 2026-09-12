@@ -5,7 +5,7 @@ import EventCard from "@/components/EventCard";
 import PageMeta from "@/components/PageMeta";
 import SiteLayout from "@/components/SiteLayout";
 import { events } from "@/data/events";
-import { venues, type AccessKind } from "@/data/venues";
+import { comingSoonVenue, venues, type AccessKind } from "@/data/venues";
 
 const HERO_IMAGE = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663043834901/qENfWDNvhdacncwA.webp";
 
@@ -37,7 +37,7 @@ export default function Home() {
     <SiteLayout>
       <PageMeta
         title="Where to Play Pickleball in St. George, Utah"
-        description="Find public courts, indoor clubs, paid facilities, and private pickleball venues in St. George, Utah, with addresses, access details, court counts, and maps."
+        description="Find public courts, indoor clubs, paid facilities, and private pickleball venues across greater St. George and Washington County, Utah."
         path="/"
       />
 
@@ -47,7 +47,7 @@ export default function Home() {
           <div className="container home-hero__content">
             <p className="eyebrow eyebrow--light">THE LOCAL COURT FIELD GUIDE</p>
             <h1>Where to Play Pickleball in St. George</h1>
-            <p className="home-hero__lede">Public parks, indoor clubs, resort courts, and community facilities—organized in one clear local guide.</p>
+            <p className="home-hero__lede">Public parks, indoor clubs, resort courts, and community facilities across Washington County—organized in one clear local guide.</p>
             <a className="hero-link" href="#court-directory">
               Explore all courts <ArrowDown aria-hidden="true" />
             </a>
@@ -62,7 +62,7 @@ export default function Home() {
               <p className="eyebrow">A COURT GUIDE BUILT FOR THIS PLACE</p>
               <h2 id="intro-title">From first serve to final point, start with the right court.</h2>
             </div>
-            <p className="intro-copy">St. George has one of the deepest mixes of pickleball facilities in Utah. This directory separates free public courts from memberships, paid play, and private community access so you can make a better plan before you leave.</p>
+            <p className="intro-copy">Greater St. George and Washington County have one of Utah’s deepest mixes of pickleball facilities. This directory separates free public courts from memberships, paid play, and private community access so you can make a better plan before you leave.</p>
           </div>
         </section>
 
@@ -88,8 +88,8 @@ export default function Home() {
           <div className="container">
             <div className="directory-heading">
               <div>
-                <p className="eyebrow">12 KNOWN VENUES · ST. GEORGE, UTAH</p>
-                <h2 id="directory-title">Where to Play Pickleball in St. George</h2>
+                <p className="eyebrow">20 CURRENT VENUES · 1 COMING SOON · WASHINGTON COUNTY</p>
+                <h2 id="directory-title">Where to Play Across Greater St. George</h2>
               </div>
               <p>Choose a venue for court count, access, hours guidance, address, and a map.</p>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
                     </span>
                     <span className="venue-row__fact">
                       <small>Courts</small>
-                      <strong>{venue.courts}</strong>
+                      <strong>{venue.courts ?? "Not confirmed"}</strong>
                     </span>
                     <span className="venue-row__fact venue-row__fact--setting">
                       <small>Setting</small>
@@ -133,6 +133,22 @@ export default function Home() {
               })}
               {visibleVenues.length === 0 && <p className="empty-state">No venues match that filter.</p>}
             </div>
+
+            {filter === "all" && (
+              <aside className="coming-soon-listing" aria-labelledby="coming-soon-title">
+                <div>
+                  <p className="eyebrow">COMING SOON · NOT YET OPEN</p>
+                  <h3 id="coming-soon-title">{comingSoonVenue.name}</h3>
+                </div>
+                <div>
+                  <strong>{comingSoonVenue.status}</strong>
+                  <p>{comingSoonVenue.description}</p>
+                  <a href={comingSoonVenue.website} target="_blank" rel="noreferrer">
+                    Check current status <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </div>
+              </aside>
+            )}
           </div>
         </section>
 

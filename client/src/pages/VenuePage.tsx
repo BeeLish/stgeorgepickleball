@@ -14,12 +14,14 @@ export default function VenuePage() {
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(venue.mapQuery)}&output=embed`;
   const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`;
   const index = venues.findIndex((item) => item.slug === venue.slug) + 1;
+  const locality = venue.locality ?? "St. George";
+  const courtCountDescription = venue.courts === null ? "court count not confirmed" : `${venue.courts} court${venue.courts === 1 ? "" : "s"}`;
 
   return (
     <SiteLayout>
       <PageMeta
-        title={`${venue.name} Pickleball Courts | St. George, Utah`}
-        description={`${venue.name}: ${venue.courts} court${venue.courts === 1 ? "" : "s"}, ${venue.setting.toLowerCase()}, ${venue.access.toLowerCase()}. View the address, hours guidance, amenities, and map.`}
+        title={`${venue.name} Pickleball Courts | ${locality}, Utah`}
+        description={`${venue.name}: ${courtCountDescription}, ${venue.setting.toLowerCase()}, ${venue.access.toLowerCase()}. View the address, hours guidance, amenities, and map.`}
         path={`/venues/${venue.slug}`}
         venue={venue}
       />
@@ -27,9 +29,9 @@ export default function VenuePage() {
       <main className="venue-page">
         <section className="venue-masthead">
           <div className="container">
-            <Link href="/#court-directory" className="back-link"><ArrowLeft aria-hidden="true" /> All St. George courts</Link>
+            <Link href="/#court-directory" className="back-link"><ArrowLeft aria-hidden="true" /> All Washington County courts</Link>
             <div className="venue-masthead__title">
-              <p className="eyebrow">VENUE {String(index).padStart(2, "0")} · ST. GEORGE, UTAH</p>
+              <p className="eyebrow">VENUE {String(index).padStart(2, "0")} · {locality.toUpperCase()}, UTAH</p>
               <h1>{venue.name}</h1>
               <p>{venue.description}</p>
             </div>
@@ -61,7 +63,7 @@ export default function VenuePage() {
             </div>
 
             <aside className="facts-panel" aria-label="Venue facts">
-              <div className="fact"><span>Court count</span><strong>{venue.courts}</strong></div>
+              <div className="fact"><span>Court count</span><strong>{venue.courts ?? "Not confirmed"}</strong></div>
               <div className="fact"><span>Indoor / outdoor</span><strong>{venue.setting}</strong></div>
               <div className="fact"><span>Fee / membership</span><strong>{venue.fee}</strong></div>
               <div className="fact"><span>Access</span><strong>{venue.access}</strong></div>
