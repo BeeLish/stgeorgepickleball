@@ -183,8 +183,8 @@
 .event-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4rem); }
 .event-card { min-width: 0; }
 .event-card__media { display: block; color: inherit; text-decoration: none; }
-.event-card .event-placeholder { transition: transform 240ms cubic-bezier(.23,1,.32,1); }
-.event-card__media:hover .event-placeholder { transform: translateY(-5px); }
+.event-card .event-placeholder, .event-card .event-photo { transition: transform 240ms cubic-bezier(.23,1,.32,1); }
+.event-card__media:hover .event-placeholder, .event-card__media:hover .event-photo { transform: translateY(-5px); }
 .event-card:nth-child(2) .event-placeholder--card { background: var(--sage); color: white; }
 .event-card__body { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 1.2rem; padding-top: 1.8rem; }
 .event-card__index { padding-top: .15rem; color: #d9a98f; font-family: "Fraunces", serif; font-size: 1.05rem; }
@@ -295,6 +295,10 @@
 .venue-placeholder__copy span { font-size: .62rem; font-weight: 800; letter-spacing: .16em; }
 .venue-placeholder__copy strong { max-width: 780px; font-family: "Fraunces", serif; font-size: clamp(1.7rem, 4vw, 4.2rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
 .venue-placeholder--detail .venue-placeholder__copy strong, .venue-placeholder--signage .venue-placeholder__copy strong { font-size: clamp(1.5rem, 3vw, 2.6rem); }
+.event-photo { position: relative; overflow: hidden; background: var(--sand); }
+.event-photo--hero { aspect-ratio: 16 / 8.4; }
+.event-photo--card { aspect-ratio: 4 / 3; }
+.event-photo img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
 
 .venue-details { padding: 8rem 0; }
 .venue-details__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); gap: clamp(4rem, 10vw, 9rem); }
@@ -485,7 +489,7 @@
   .coming-soon-listing { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
   .event-card-grid { grid-template-columns: 1fr; gap: 3.5rem; }.event-card__body { grid-template-columns: 30px minmax(0, 1fr); gap: .8rem; }
   .events-masthead { padding-top: 2rem; padding-bottom: 5.5rem; }.events-masthead__grid { padding-top: 4rem; }
-  .event-masthead { padding-top: 2rem; }.event-masthead__title { padding-top: 3.6rem; padding-bottom: 2.5rem; }.event-placeholder--hero { aspect-ratio: 5 / 4; }
+  .event-masthead { padding-top: 2rem; }.event-masthead__title { padding-top: 3.6rem; padding-bottom: 2.5rem; }.event-placeholder--hero, .event-photo--hero { aspect-ratio: 5 / 4; }
   .contact-masthead { padding-top: 2rem; padding-bottom: 5.5rem; }.contact-masthead__grid { padding-top: 4rem; }
   .editorial-form { grid-template-columns: 1fr; }.form-field, .form-field--full, .form-submit, .form-error, .form-privacy-note { grid-column: 1; }
   .schedule-row { grid-template-columns: 1fr; gap: .7rem; }.schedule-row strong { font-size: 1.35rem; }
