@@ -11,7 +11,7 @@ export default function EventPhotoPlaceholder({ eventName, variant = "hero", cla
     return (
       <div className={`event-photo event-photo--${variant} ${className}`}>
         <img
-          src="/images/huntsman-games-pickleball.jpg"
+          src={variant === "card" ? "/images/huntsman-games-pickleball-card.jpg" : "/images/huntsman-games-pickleball.jpg"}
           alt="Two senior pickleball players on a desert court beneath the Huntsman World Senior Games logo"
         />
       </div>
