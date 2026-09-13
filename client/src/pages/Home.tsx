@@ -7,7 +7,7 @@ import SiteLayout from "@/components/SiteLayout";
 import { events } from "@/data/events";
 import { comingSoonVenue, venues, type AccessKind } from "@/data/venues";
 
-const HERO_IMAGE = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663043834901/qENfWDNvhdacncwA.webp";
+const HERO_IMAGE = "/images/desert-pickleball-hero.jpg";
 
 type Filter = "all" | AccessKind | "indoor";
 
@@ -52,7 +52,6 @@ export default function Home() {
               Explore all courts <ArrowDown aria-hidden="true" />
             </a>
           </div>
-          <span className="photo-credit">Landscape photograph by Ivy Tang / Unsplash</span>
         </section>
 
         <section className="intro-section" aria-labelledby="intro-title">
