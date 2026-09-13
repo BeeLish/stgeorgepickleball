@@ -262,6 +262,8 @@
 .field-note-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(0, 1fr); gap: clamp(3rem, 9vw, 9rem); align-items: center; }
 .field-note-grid .eyebrow { color: #f3cdbc; }
 .field-note-grid p:last-child { max-width: 650px; margin: 2rem 0 0; color: #f3e6dc; font-size: 1.05rem; line-height: 1.8; }
+.field-note-photo { aspect-ratio: 1; overflow: hidden; }
+.field-note-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .field-note-art { position: relative; min-height: 360px; border: 1px solid rgba(255,255,255,.34); }
 .field-note-art::before, .field-note-art::after { content: ""; position: absolute; background: rgba(255,255,255,.5); }
 .field-note-art::before { left: 50%; top: 0; bottom: 0; width: 1px; }

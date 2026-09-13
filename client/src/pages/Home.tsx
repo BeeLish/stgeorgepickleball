@@ -153,10 +153,11 @@ export default function Home() {
 
         <section className="field-note-section">
           <div className="container field-note-grid">
-            <div className="field-note-art" aria-hidden="true">
-              <span className="field-note-art__ball" />
-              <span className="field-note-art__line" />
-              <span className="field-note-art__line field-note-art__line--short" />
+            <div className="field-note-photo">
+              <img
+                src="/images/field-note-paddles.jpg"
+                alt="Two pickleball paddles and a ball on a sun-warmed court"
+              />
             </div>
             <div>
               <p className="eyebrow">FIELD NOTE</p>
