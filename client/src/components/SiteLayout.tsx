@@ -33,6 +33,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           <div className="site-footer__aside">
             <p>Venue and event details can change. For special trips, confirm current hours, access, and schedules with the official organizer.</p>
             <Link href="/events">Tournaments & Events</Link>
+            <Link href="/contact">Contact & court tips</Link>
             <a href="/sitemap.xml">Sitemap</a>
           </div>
         </div>

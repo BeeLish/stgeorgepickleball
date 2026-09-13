@@ -1,6 +1,6 @@
 # St. George Pickleball
 
-The local court directory for **St. George, Utah**. The current release includes the homepage directory, 22 individual venue pages, tournament guides, maps, crawlable page metadata, structured data, `robots.txt`, and an XML sitemap.
+The local court directory for **St. George, Utah**. The current release includes the homepage directory, 23 individual venue pages, tournament guides, maps, a general contact form, a court-tip form, crawlable page metadata, structured data, `robots.txt`, and an XML sitemap.
 
 ## Local development
 
@@ -28,4 +28,4 @@ Venue information comes from the project’s `StGeorgePickleball_Venue_Data_Firs
 
 ## Not included in this release
 
-Black Desert Resort, email capture, and contact or sponsor forms remain outside this release.
+Email capture, lead magnets, stay/play package messaging, and a privacy-policy page remain outside this release.

@@ -3,6 +3,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import ScrollToTop from "./components/ScrollToTop";
+import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
 import EventsHub from "./pages/EventsHub";
 import Home from "./pages/Home";
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/events" component={EventsHub} />
       <Route path="/events/:slug" component={EventPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route path="/venues/:slug" component={VenuePage} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

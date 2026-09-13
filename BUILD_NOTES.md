@@ -6,7 +6,9 @@ The live foundation contains the Priority 1.A court directory and the code-based
 
 Priority 1.B adds a tournaments and events hub, dedicated 2026 Huntsman World Senior Games pickleball and Fall Brawl pages, site-wide navigation, a prominent homepage event section, and `Event` structured data on both event pages.
 
-Black Desert Resort, email capture, lead magnets, and contact or sponsor forms remain intentionally excluded.
+Black Desert Resort now has an independent, unpaid facility profile using only owner-confirmed facts. The homepage directory links to it as the second venue. Its page uses the standard three deliberate photography placeholders; no resort or PPA press image is used.
+
+The `/contact` page contains two separate Formspree-backed forms: a general inquiry form with an inquiry-type selector, and a private missing-court tip form. Court tips are expressly routed for verification and never publish automatically. Email capture, lead magnets, stay/play package messaging, partnership language, and a privacy-policy page remain intentionally excluded.
 
 ## Permanent venue-map standard
 
@@ -14,7 +16,7 @@ Every current and future venue page inherits a tight Google satellite embed from
 
 A venue may use a street-map fallback only by declaring `mapType: "roadmap"` and a written `mapFallbackReason` in its venue data record. This makes any exception visible, documented, and deliberate rather than an accidental template regression.
 
-The visual review identified six current exceptions. **Dixie Springs Park** does not have a confirmed address and its resolved park image contains no identifiable courts. **Entrada** resolves the published address but current imagery does not reveal the listed outdoor courts. **Sullivan Virgin River Park** resolves to the soccer park without showing the listed pickleball courts. **SunRiver Pickleball Complex** produces mismatched satellite imagery rather than the published St. George venue. **Vernon Worthen Park** resolves to the park but not to an identifiable court layout. **Vintage Home Owners Association** has low-detail imagery that does not reveal the private courts. Each page displays its reason immediately above the map.
+The visual review identified seven current exceptions. **Black Desert Resort Pickleball** produces mismatched satellite imagery rather than its court complex. **Dixie Springs Park** does not have a confirmed address and its resolved park image contains no identifiable courts. **Entrada** resolves the published address but current imagery does not reveal the listed outdoor courts. **Sullivan Virgin River Park** resolves to the soccer park without showing the listed pickleball courts. **SunRiver Pickleball Complex** produces mismatched satellite imagery rather than the published St. George venue. **Vernon Worthen Park** resolves to the park but not to an identifiable court layout. **Vintage Home Owners Association** has low-detail imagery that does not reveal the private courts. Each page displays its reason immediately above the map.
 
 ## Data gaps retained from the supplied source
 

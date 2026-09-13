@@ -73,15 +73,31 @@ export default function VenuePage() {
               <div className="fact"><span>Fee / membership</span><strong>{venue.fee}</strong></div>
               <div className="fact"><span>Access</span><strong>{venue.access}</strong></div>
               {venue.surface && <div className="fact"><span>Surface & setup</span><strong>{venue.surface}</strong></div>}
+              {venue.facts?.map((fact) => <div className="fact" key={fact.label}><span>{fact.label}</span><strong>{fact.value}</strong></div>)}
               {venue.phone && (
                 <a className="contact-link" href={`tel:${venue.phone.replace(/[^\d+]/g, "")}`}><Phone aria-hidden="true" /> {venue.phone}</a>
               )}
               {venue.website && (
-                <a className="contact-link" href={venue.website} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" /> Official website</a>
+                <a className="contact-link" href={venue.website} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" /> {venue.websiteLabel ?? "Official website"}</a>
               )}
             </aside>
           </div>
         </section>
+
+        {venue.profile && (
+          <section className="venue-profile-section" aria-labelledby="venue-profile-heading">
+            <div className="container venue-profile-grid">
+              <div>
+                <p className="eyebrow">{venue.profile.eyebrow}</p>
+                <h2 id="venue-profile-heading">{venue.profile.heading}</h2>
+              </div>
+              <div className="venue-profile-copy">
+                {venue.profile.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {venue.profile.disclosure && <p className="editorial-disclosure">{venue.profile.disclosure}</p>}
+              </div>
+            </div>
+          </section>
+        )}
 
         {venue.amenities && venue.amenities.length > 0 && (
           <section className="amenities-section">

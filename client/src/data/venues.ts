@@ -21,7 +21,15 @@ export type Venue = {
   hours: string;
   phone?: string;
   website?: string;
+  websiteLabel?: string;
   amenities?: string[];
+  facts?: { label: string; value: string }[];
+  profile?: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+    disclosure?: string;
+  };
   description: string;
   notable?: string;
 } & VenueMapConfig;
@@ -43,6 +51,40 @@ export const venues: Venue[] = [
     amenities: ["Court lighting", "Restrooms", "Drinking water", "Wheelchair accessible"],
     description: "St. George’s largest public pickleball destination, with 33 outdoor courts and a championship court with permanent bleacher seating.",
     notable: "The complex hosts major local tournaments and was named Public Facility of the Year by the Professional Pickleball Registry in 2020.",
+  },
+  {
+    slug: "black-desert-resort-pickleball",
+    name: "Black Desert Resort Pickleball",
+    address: "1500 E Black Desert Drive, Ivins, UT 84738",
+    locality: "Ivins",
+    postalCode: "84738",
+    mapQuery: "Black Desert Resort Pickleball, 1500 E Black Desert Drive, Ivins, Utah",
+    mapType: "roadmap",
+    mapZoom: 19,
+    mapFallbackReason: "Street map shown because Google’s current satellite result is mismatched to the resort court complex and does not show identifiable courts.",
+    courts: 21,
+    setting: "Setting not confirmed",
+    access: "Confirmed members and registered resort guests only; no public day-visitor access",
+    accessKind: "private",
+    fee: "Members or registered resort guests only",
+    hours: "Confirm current court access and hours directly with Black Desert Resort",
+    website: "https://www.blackdesertresort.com/stay",
+    websiteLabel: "Explore stays at Black Desert Resort",
+    facts: [
+      { label: "Full build-out", value: "29 courts" },
+      { label: "Championship Court", value: "1,000–1,500 seats" },
+    ],
+    description: "A 21-court resort complex planned to reach 29 courts at full build-out, anchored by a Championship Court with capacity for 1,000–1,500 spectators.",
+    profile: {
+      eyebrow: "INDEPENDENT FACILITY PROFILE",
+      heading: "Tournament scale—with a clear access boundary.",
+      paragraphs: [
+        "Black Desert Resort currently operates 21 pickleball courts and plans 29 at full build-out. Its Championship Court is designed for 1,000–1,500 spectators, giving the complex the capacity to host major competition.",
+        "The resort partnered with the PPA Tour and Greater Zion to host the Greater Zion Cup in March 2026. It was one of five Cup events held worldwide on the Carvana PPA Tour that year.",
+        "Access is restricted to confirmed resort members and registered guests. Black Desert does not offer public day-visitor court access as of this writing. Anyone considering a stay should confirm current court access directly with the resort before booking.",
+      ],
+      disclosure: "This is independent, unpaid editorial coverage—not a resort promotion or partnership.",
+    },
   },
   {
     slug: "the-picklr-st-george",

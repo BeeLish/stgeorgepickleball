@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.stgeorgepickleball.com/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.stgeorgepickleball.com/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.stgeorgepickleball.com/contact</loc><lastmod>2026-09-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/events</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/events/huntsman-world-senior-games-pickleball-2026</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/events/fall-brawl-pickleball-2026</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/venues/little-valley-pickleball-complex</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stgeorgepickleball.com/venues/black-desert-resort-pickleball</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/venues/the-picklr-st-george</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/venues/sunriver-pickleball-complex</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.stgeorgepickleball.com/venues/vernon-worthen-park</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
