@@ -103,6 +103,23 @@ function placeholder(name) {
   return `<div class="venue-placeholder venue-placeholder--hero event-placeholder event-placeholder--hero" role="img" aria-label="${escapeHtml(name)} editorial photography placeholder"><div class="venue-placeholder__copy"><span>2026 ST. GEORGE EVENT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div>`;
 }
 
+function venueMapZoom(courts) {
+  return courts !== null && courts >= 10 ? 19 : 20;
+}
+
+function venueMapQuery(name, address, locality, noStreetAddress) {
+  return noStreetAddress ? `${name}, ${locality}, Utah` : `${name}, ${address}`;
+}
+
+const venueMapFallbacks = {
+  "dixie-springs-park": "Street map shown because current satellite imagery does not reveal identifiable courts and the exact park address is still unresolved.",
+  "entrada": "Street map shown because current satellite imagery at the published address does not reveal the listed outdoor courts.",
+  "sullivan-virgin-river-park": "Street map shown because current satellite imagery resolves the soccer park but does not reveal the listed pickleball courts.",
+  "sunriver-pickleball-complex": "Street map shown because Google’s current satellite result is mismatched to the published St. George venue location.",
+  "vernon-worthen-park": "Street map shown because current satellite imagery resolves the park but does not reveal an identifiable pickleball-court layout.",
+  "vintage-home-owners-association": "Street map shown because current satellite imagery is low-detail and does not reveal the private community courts.",
+};
+
 function eventCard(event, index) {
   return `<article class="event-card"><a class="event-card__media" href="/events/${event.slug}"><div class="venue-placeholder venue-placeholder--signage event-placeholder event-placeholder--card"><div class="venue-placeholder__copy"><span>2026 ST. GEORGE EVENT GUIDE</span><strong>${escapeHtml(event.shortName)}</strong></div></div></a><div class="event-card__body"><div class="event-card__index">${String(index + 1).padStart(2, "0")}</div><div><p class="eyebrow">${escapeHtml(event.cardDate)}</p><h3><a href="/events/${event.slug}">${escapeHtml(event.name)}</a></h3><p>${escapeHtml(event.summary)}</p><a class="text-link" href="/events/${event.slug}">Plan your visit →</a></div></div></article>`;
 }
@@ -122,6 +139,13 @@ for (const [slug, name, address, courts, setting, access, fee, locality = "St. G
     : `${name} Pickleball Courts | ${locality}, Utah`;
   const description = `${name}: ${courtLabel}, ${String(setting).toLowerCase()}, ${String(access).toLowerCase()}. View the address, hours guidance, and map.`;
   const canonical = `${siteUrl}/venues/${slug}`;
+  const mapQuery = venueMapQuery(name, address, locality, noStreetAddress);
+  const mapFallbackReason = venueMapFallbacks[slug];
+  const mapType = mapFallbackReason ? "roadmap" : "satellite";
+  const mapTileMode = mapType === "satellite" ? "k" : "m";
+  const mapLabel = mapType === "satellite" ? "Satellite · tight court view" : "Street-map fallback";
+  const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed&t=${mapTileMode}&z=${venueMapZoom(courts)}&hl=en`;
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "SportsActivityLocation"],
@@ -131,7 +155,7 @@ for (const [slug, name, address, courts, setting, access, fee, locality = "St. G
     address: { "@type": "PostalAddress", streetAddress: noStreetAddress ? undefined : String(address).split(",")[0], addressLocality: locality, addressRegion: "UT", postalCode: postalCode ?? String(address).match(/\b\d{5}\b/)?.[0], addressCountry: "US" },
     priceRange: fee,
   };
-  const main = `<main class="venue-page"><section class="venue-masthead"><div class="container"><a class="back-link" href="/#court-directory">← All Washington County courts</a><div class="venue-masthead__title"><p class="eyebrow">${escapeHtml(locality).toUpperCase()}, UTAH</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div><div class="venue-placeholder venue-placeholder--hero" role="img" aria-label="${escapeHtml(name)} photography placeholder"><div class="venue-placeholder__copy"><span>ST. GEORGE COURT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div></div></section><section class="venue-details"><div class="container venue-details__grid"><div class="venue-details__main"><p class="eyebrow">THE ESSENTIALS</p><h2>Plan your visit</h2><div class="address-block"><div><small>ADDRESS</small><address>${escapeHtml(address)}</address></div></div><div class="hours-block"><div><small>HOURS</small><p>Confirm current hours before visiting</p></div></div></div><aside class="facts-panel"><div class="fact"><span>Court count</span><strong>${courts ?? "Not confirmed"}</strong></div><div class="fact"><span>Indoor / outdoor</span><strong>${escapeHtml(setting)}</strong></div><div class="fact"><span>Fee / membership</span><strong>${escapeHtml(fee)}</strong></div><div class="fact"><span>Access</span><strong>${escapeHtml(access)}</strong></div></aside></div></section></main>`;
+  const main = `<main class="venue-page"><section class="venue-masthead"><div class="container"><a class="back-link" href="/#court-directory">← All Washington County courts</a><div class="venue-masthead__title"><p class="eyebrow">${escapeHtml(locality).toUpperCase()}, UTAH</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div><div class="venue-placeholder venue-placeholder--hero" role="img" aria-label="${escapeHtml(name)} photography placeholder"><div class="venue-placeholder__copy"><span>ST. GEORGE COURT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div></div></section><section class="venue-details"><div class="container venue-details__grid"><div class="venue-details__main"><p class="eyebrow">THE ESSENTIALS</p><h2>Plan your visit</h2><div class="address-block"><div><small>ADDRESS</small><address>${escapeHtml(address)}</address></div></div><div class="hours-block"><div><small>HOURS</small><p>Confirm current hours before visiting</p></div></div></div><aside class="facts-panel"><div class="fact"><span>Court count</span><strong>${courts ?? "Not confirmed"}</strong></div><div class="fact"><span>Indoor / outdoor</span><strong>${escapeHtml(setting)}</strong></div><div class="fact"><span>Fee / membership</span><strong>${escapeHtml(fee)}</strong></div><div class="fact"><span>Access</span><strong>${escapeHtml(access)}</strong></div></aside></div></section><section class="map-section" aria-labelledby="map-heading-${escapeHtml(slug)}"><div class="container"><div class="map-heading"><div><p class="eyebrow">WAYFINDING</p><h2 id="map-heading-${escapeHtml(slug)}">Find ${escapeHtml(name)}</h2></div><div class="map-heading__actions"><span class="map-mode map-mode--${mapType}">${mapLabel}</span><a href="${escapeHtml(googleMapsUrl)}" target="_blank" rel="noreferrer">Open in Google Maps →</a></div></div>${mapFallbackReason ? `<p class="map-fallback-note">${escapeHtml(mapFallbackReason)}</p>` : ""}<div class="map-frame"><iframe title="${escapeHtml(mapLabel)} of ${escapeHtml(name)}" src="${escapeHtml(mapUrl)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section></main>`;
   const venueHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title, description, canonical, schema, ogType: "place" });
   writeCleanRoute(`/venues/${slug}`, venueHtml);
 }

@@ -4,6 +4,7 @@ import PageMeta from "@/components/PageMeta";
 import SiteLayout from "@/components/SiteLayout";
 import VenuePhotoPlaceholder from "@/components/VenuePhotoPlaceholder";
 import { venueBySlug, venues } from "@/data/venues";
+import { buildVenueGoogleMapsUrl, buildVenueMapEmbedUrl, getVenueMapPresentation } from "@/lib/venueMap";
 
 export default function VenuePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -11,8 +12,9 @@ export default function VenuePage() {
 
   if (!venue) return <Redirect to="/404" />;
 
-  const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(venue.mapQuery)}&output=embed`;
-  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`;
+  const mapUrl = buildVenueMapEmbedUrl(venue);
+  const directionsUrl = buildVenueGoogleMapsUrl(venue);
+  const mapPresentation = getVenueMapPresentation(venue);
   const index = venues.findIndex((item) => item.slug === venue.slug) + 1;
   const locality = venue.locality ?? "St. George";
   const courtCountDescription = venue.courts === null ? "court count not confirmed" : `${venue.courts} court${venue.courts === 1 ? "" : "s"}`;
@@ -102,11 +104,15 @@ export default function VenuePage() {
                 <p className="eyebrow">WAYFINDING</p>
                 <h2 id="map-heading">Find {venue.name}</h2>
               </div>
-              <a href={directionsUrl} target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight aria-hidden="true" /></a>
+              <div className="map-heading__actions">
+                <span className={`map-mode map-mode--${mapPresentation.type}`}>{mapPresentation.label}</span>
+                <a href={directionsUrl} target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight aria-hidden="true" /></a>
+              </div>
             </div>
+            {mapPresentation.fallbackReason && <p className="map-fallback-note">{mapPresentation.fallbackReason}</p>}
             <div className="map-frame">
               <iframe
-                title={`Map showing ${venue.name}`}
+                title={`${mapPresentation.label} of ${venue.name}`}
                 src={mapUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -8,6 +8,14 @@ Priority 1.B adds a tournaments and events hub, dedicated 2026 Huntsman World Se
 
 Black Desert Resort, email capture, lead magnets, and contact or sponsor forms remain intentionally excluded.
 
+## Permanent venue-map standard
+
+Every current and future venue page inherits a tight Google satellite embed from the shared venue template. The default zoom is 19 for facilities with ten or more known courts and 20 for smaller or unconfirmed facilities, keeping the view focused on court-scale detail rather than the surrounding road network. Every page retains a separate **Open in Google Maps** link.
+
+A venue may use a street-map fallback only by declaring `mapType: "roadmap"` and a written `mapFallbackReason` in its venue data record. This makes any exception visible, documented, and deliberate rather than an accidental template regression.
+
+The visual review identified six current exceptions. **Dixie Springs Park** does not have a confirmed address and its resolved park image contains no identifiable courts. **Entrada** resolves the published address but current imagery does not reveal the listed outdoor courts. **Sullivan Virgin River Park** resolves to the soccer park without showing the listed pickleball courts. **SunRiver Pickleball Complex** produces mismatched satellite imagery rather than the published St. George venue. **Vernon Worthen Park** resolves to the park but not to an identifiable court layout. **Vintage Home Owners Association** has low-detail imagery that does not reveal the private courts. Each page displays its reason immediately above the map.
+
 ## Data gaps retained from the supplied source
 
 No missing fact was invented. The public pages use direct “confirm before visiting” language where the source did not provide a reliable answer.

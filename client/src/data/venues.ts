@@ -1,5 +1,9 @@
 export type AccessKind = "free" | "membership" | "paid" | "private" | "unknown";
 
+type VenueMapConfig =
+  | { mapType?: "satellite"; mapZoom?: number; mapFallbackReason?: never }
+  | { mapType: "roadmap"; mapZoom?: number; mapFallbackReason: string };
+
 export type Venue = {
   slug: string;
   name: string;
@@ -20,7 +24,7 @@ export type Venue = {
   amenities?: string[];
   description: string;
   notable?: string;
-};
+} & VenueMapConfig;
 
 export const venues: Venue[] = [
   {
@@ -62,6 +66,8 @@ export const venues: Venue[] = [
     name: "SunRiver Pickleball Complex",
     address: "4275 S Country Club Drive, St. George, UT 84790",
     mapQuery: "SunRiver Pickleball Complex, St. George, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because Google’s current satellite result is mismatched to the published St. George venue location.",
     courts: 14,
     setting: "Setting not confirmed",
     access: "Community membership; public access has not been confirmed",
@@ -75,6 +81,8 @@ export const venues: Venue[] = [
     name: "Vernon Worthen Park",
     address: "300 S 400 E, St. George, UT 84770",
     mapQuery: "Vernon Worthen Park, St. George, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because current satellite imagery resolves the park but does not reveal an identifiable pickleball-court layout.",
     courts: 6,
     setting: "Setting not confirmed",
     surface: "Permanent nets",
@@ -102,6 +110,8 @@ export const venues: Venue[] = [
     name: "Entrada",
     address: "2552 W Sinagua Trail, St. George, UT 84770",
     mapQuery: "Entrada at Snow Canyon, 2552 W Sinagua Trail, St. George, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because current satellite imagery at the published address does not reveal the listed outdoor courts.",
     courts: 12,
     setting: "Outdoor",
     surface: "Hard court with permanent lines and nets",
@@ -192,6 +202,8 @@ export const venues: Venue[] = [
     name: "Vintage Home Owners Association",
     address: "875 W Rio Virgin Drive, St. George, UT 84790",
     mapQuery: "875 W Rio Virgin Drive, St. George, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because current satellite imagery is low-detail and does not reveal the private community courts.",
     courts: 2,
     setting: "Setting not confirmed",
     access: "Private community; members only",
@@ -207,6 +219,8 @@ export const venues: Venue[] = [
     locality: "Washington",
     postalCode: "84780",
     mapQuery: "Sullivan Virgin River Park, 965 S Washington Fields Road, Washington, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because current satellite imagery resolves the soccer park but does not reveal the listed pickleball courts.",
     courts: 6,
     setting: "Outdoor",
     surface: "Permanent lines and nets",
@@ -320,6 +334,8 @@ export const venues: Venue[] = [
     locality: "Hurricane",
     postalCode: "84737",
     mapQuery: "Dixie Springs Park, Hurricane, Utah",
+    mapType: "roadmap",
+    mapFallbackReason: "Street map shown because current satellite imagery does not reveal identifiable courts and the exact park address is still unresolved.",
     courts: 2,
     setting: "Setting not confirmed",
     surface: "Permanent nets",
