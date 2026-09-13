@@ -18,6 +18,17 @@ export default function EventPhotoPlaceholder({ eventName, variant = "hero", cla
     );
   }
 
+  if (eventName === "Fall Brawl") {
+    return (
+      <div className={`event-photo event-photo--${variant} ${className}`}>
+        <img
+          src={variant === "card" ? "/images/fall-brawl-pickleball-card.jpg" : "/images/fall-brawl-pickleball.jpg"}
+          alt="Players competing across a multi-court pickleball complex beneath the City of St. George logo"
+        />
+      </div>
+    );
+  }
+
   const style = { "--court-opacity": variant === "hero" ? 0.32 : 0.24 } as CSSProperties;
 
   return (
