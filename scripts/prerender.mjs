@@ -8,7 +8,7 @@ const baseHtml = fs.readFileSync(path.join(outDir, "index.html"), "utf8");
 const siteUrl = "https://www.stgeorgepickleball.com";
 
 const venues = [
-  ["little-valley-pickleball-complex", "Little Valley Pickleball Complex", "2330 Horseman Park Drive, St. George, UT 84790", 33, "Outdoor", "Free and open to the public", "Free"],
+  ["little-valley-pickleball-complex", "Little Valley Pickleball Complex", "2149 E Horseman Park Drive, St. George, UT 84790", 33, "Outdoor", "Free and open to the public", "Free"],
   ["black-desert-resort-pickleball", "Black Desert Resort Pickleball", "1500 E Black Desert Drive, Ivins, UT 84738", 21, "Setting not confirmed", "Confirmed members and registered resort guests only; no public day-visitor access", "Members or registered resort guests only", "Ivins", "84738"],
   ["the-picklr-st-george", "The Picklr — St. George", "615 UT-34, St. George, UT 84770", 8, "Indoor", "Membership required; ask about guest or day-pass options", "Membership required"],
   ["sunriver-pickleball-complex", "SunRiver Pickleball Complex", "4275 S Country Club Drive, St. George, UT 84790", 14, "Setting not confirmed", "Community membership; public access has not been confirmed", "Membership or resident access"],
@@ -41,15 +41,28 @@ const events = [
     dateLabel: "Games: October 5–17, 2026 · Pickleball: October 12–17 (preliminary)",
     cardDate: "OCT 5–17 · PICKLEBALL OCT 12–17",
     locationName: "Little Valley Pickleball Complex",
-    locationAddress: "2330 Horseman Park Drive, St. George, UT 84790",
+    locationAddress: "2149 E Horseman Park Drive, St. George, UT 84790",
     organizer: "Huntsman World Senior Games",
     startDate: "2026-10-12",
     endDate: "2026-10-17",
     summary: "A marquee week inside St. George’s 43-sport international celebration of athletes age 50 and over.",
-    description: "Plan for 2026 Huntsman World Senior Games pickleball in St. George: preliminary dates, venues, spectator guidance, parking notes, and official schedule links.",
+    description: "Plan for 2026 Huntsman World Senior Games pickleball in St. George: verified competition dates, daily divisions, venues, spectator guidance, and official schedule links.",
     schemaDescription: "The 2026 pickleball competition at the Huntsman World Senior Games, an international 43-sport event for athletes age 50 and over in St. George, Utah.",
     officialUrl: "https://seniorgames.net/sports/pickleball",
-    bodyHtml: 'The <a class="inline-source-link" href="https://seniorgames.net/sports/pickleball" target="_blank" rel="noreferrer">Huntsman World Senior Games official site</a> describes two weeks of competition for athletes age 50 and over across 43 sports. Pickleball is a signature draw, with age singles, age doubles, mixed doubles, and skill-level doubles listed at <a class="inline-source-link" href="/venues/little-valley-pickleball-complex">Little Valley Pickleball Complex</a> and SunRiver. The official October 12–17 pickleball schedule is preliminary and subject to change.',
+    scheduleUrl: "https://pickleballtournaments.com/tournaments/a5227449-351e-4d13-9287-4323d60b3ef3",
+    verifiedOn: "October 7, 2026",
+    statusNote: "Competition runs Monday, October 12 through Saturday, October 17, with play beginning at 8:00 a.m. daily and athlete check-in at 7:00 a.m. The official page still labels the schedule preliminary and subject to change, and there are no make-up days. One contradiction remains on that page: its day-by-day schedule and the official tournament listing both put open practice on Sunday, October 11, while a separate section further down the same page still says October 12.",
+    schedule: [
+      ["OCT 5–17", "Huntsman World Senior Games", "The full 2026 multi-sport event window in St. George.", false],
+      ["SUN · OCT 11", "Open practice day", "The official day-by-day schedule and the official tournament listing both put open practice all day at Little Valley on Sunday, October 11, with SunRiver opening to Huntsman participants after 10:00 a.m. A separate section of the same official page still says October 12.", true],
+      ["MON · OCT 12", "Skill-level doubles", "Men 4.0, 4.5, and 5.0, and women 3.5, 4.0, 4.5, and 5.0. Competition begins at 8:00 a.m.; athlete check-in at 7:00 a.m.", false],
+      ["TUE · OCT 13", "Men’s age doubles · women’s 3.0 skill doubles", "Age doubles runs in five-year brackets from 50+ upward; the women’s 3.0 skill division plays the same day.", false],
+      ["WED · OCT 14", "Women’s age doubles · men’s 3.0 and 3.5 skill doubles", "Women’s age doubles plays alongside the lower men’s skill divisions.", false],
+      ["THU · OCT 15", "Mixed doubles · ages 50, 55, 60", "Mixed doubles opens with the younger age groups.", false],
+      ["FRI · OCT 16", "Mixed doubles · ages 65, 70, 75, 80+", "Mixed doubles closes with the older age groups.", false],
+      ["SAT · OCT 17", "Men’s and women’s singles", "The competition week ends with age-group singles.", false],
+    ],
+    bodyHtml: 'The <a class="inline-source-link" href="https://seniorgames.net/sports/pickleball" target="_blank" rel="noreferrer">Huntsman World Senior Games official site</a> describes two weeks of competition for athletes age 50 and over across 43 sports. Pickleball is a signature draw, with age singles, age doubles, mixed doubles, and skill-level doubles listed at <a class="inline-source-link" href="/venues/little-valley-pickleball-complex">Little Valley Pickleball Complex</a> and SunRiver. Competition runs October 12–17 with play beginning at 8:00 a.m. daily, and the official page still labels the schedule preliminary and subject to change.',
   },
   {
     slug: "fall-brawl-pickleball-2026",
@@ -58,15 +71,26 @@ const events = [
     dateLabel: "October 6–10, 2026",
     cardDate: "OCT 6–10 · LITTLE VALLEY",
     locationName: "Little Valley Pickleball Complex",
-    locationAddress: "2330 Horseman Park Drive, St. George, UT 84790",
+    locationAddress: "2149 E Horseman Park Drive, St. George, UT 84790",
     organizer: "City of St. George",
     startDate: "2026-10-06",
     endDate: "2026-10-10",
     summary: "The Original Fall Brawl brings a nationally significant amateur field to Little Valley’s 33 courts.",
-    description: "Plan for the 2026 St. George Fall Brawl pickleball tournament at Little Valley, with confirmed dates, registration links, venue guidance, and schedule notes.",
-    schemaDescription: "The City of St. George Fall Brawl pickleball tournament at Little Valley Pickleball Complex, a major amateur event drawing more than 1,000 participants.",
+    description: "Plan for the 2026 St. George Fall Brawl pickleball tournament at Little Valley: verified dates, the day-by-day division schedule, the correct venue address, and official links.",
+    schemaDescription: "The City of St. George Fall Brawl pickleball tournament at Little Valley Pickleball Complex, a major amateur event drawing more than 1,200 participants.",
     officialUrl: "https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php",
-    bodyHtml: 'The <a class="inline-source-link" href="https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php" target="_blank" rel="noreferrer">City tournament page</a> schedules Fall Brawl (The Original) for October 6–10 at <a class="inline-source-link" href="/venues/little-valley-pickleball-complex">Little Valley Pickleball Complex</a>. City-reported figures cited in the local venue research describe a field of more than 1,000 participants and a place among the five largest amateur pickleball tournaments in the country. Check <a class="inline-source-link" href="https://pickleballtournaments.com/tournaments/fall-brawl-2026" target="_blank" rel="noreferrer">PickleballTournaments.com</a> for divisions, fees, and event-day details.',
+    scheduleUrl: "https://pickleballtournaments.com/tournaments/fall-brawl-2026",
+    verifiedOn: "October 7, 2026",
+    statusNote: "The City of St. George confirms October 6–10, and the live registration listing now publishes a day-by-day division schedule. Registration is closed with 1,233 players entered, and the refund window has passed. Daily start times and court assignments are released through the registration platform rather than published in advance. A separate spectator admission policy or parking plan has not been published.",
+    schedule: [
+      ["TUE · OCT 6", "Senior women’s doubles", "Age groups 50+, 60+, 70+, and 80+.", false],
+      ["WED · OCT 7", "Senior men’s doubles", "Age groups 50+, 60+, 70+, and 80+.", false],
+      ["THU · OCT 8", "Senior mixed doubles", "Age groups 50+, 60+, 70+, and 80+.", false],
+      ["FRI · OCT 9", "Men’s and women’s doubles", "Open and 35+ divisions.", false],
+      ["SAT · OCT 10", "Mixed doubles", "Open and 35+ divisions.", false],
+      ["CHECK OFFICIAL", "Start times and court assignments", "Daily start times and court assignments are released through the registration platform rather than published in advance.", true],
+    ],
+    bodyHtml: 'The <a class="inline-source-link" href="https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php" target="_blank" rel="noreferrer">City tournament page</a> schedules Fall Brawl (The Original) for October 6–10 at <a class="inline-source-link" href="/venues/little-valley-pickleball-complex">Little Valley Pickleball Complex</a>. The <a class="inline-source-link" href="https://pickleballtournaments.com/tournaments/fall-brawl-2026" target="_blank" rel="noreferrer">official registration listing</a> now publishes a day-by-day division schedule and shows registration closed with 1,233 players entered. Results are submitted to DUPR, and the tournament is not USA Pickleball sanctioned.',
   },
 ];
 
@@ -122,6 +146,33 @@ const venueMapFallbacks = {
   "vintage-home-owners-association": "Street map shown because current satellite imagery is low-detail and does not reveal the private community courts.",
 };
 
+/**
+ * Venue-specific editorial blocks that only apply to one entry.
+ * Little Valley was re-verified October 7, 2026 — see OCTOBER_ACCURACY_PASS_NOTES.md.
+ */
+const venueExtras = {
+  "little-valley-pickleball-complex": {
+    factsHtml:
+      '<div class="fact"><span>Courts located</span><strong>West side of The Fields at Little Valley, closest to Horseman Park Drive</strong></div><div class="fact"><span>Court reservations</span><strong>City Parks · (435) 627-4530</strong></div><div class="fact"><span>Other park address</span><strong>2995 S 2350 East — the east side of the same park</strong></div><div class="fact"><span>Championship court</span><strong>Permanent bleacher seating</strong></div>',
+    hoursText:
+      "The City does not publish official court hours. Free public play is available whenever City leagues, clinics, and tournaments are not using the courts; check in with the attendant during City programs, or call City Parks before a special trip.",
+    amenities: [
+      "Court lighting",
+      "Restrooms",
+      "Drinking fountains",
+      "Free on-site parking",
+      "Covered pavilions",
+      "Picnic tables",
+      "Playground and splash pad",
+    ],
+    profileHtml:
+      '<section class="venue-profile-section"><div class="container venue-profile-grid"><div><p class="eyebrow">INDEPENDENT FACILITY PROFILE</p><h2>33 courts on the west side—and an address worth double-checking.</h2></div><div class="venue-profile-copy"><p>Little Valley is the City of St. George’s flagship pickleball facility: 33 outdoor courts, including a championship court with permanent bleacher seating, occupying the west side of The Fields at Little Valley. The courts are free and open to the public whenever City leagues, clinics, and tournaments are not using them.</p><p>The address is the detail most guides get wrong. The City’s official pickleball page lists Little Valley at 2149 Horseman Park Drive, and both the City’s Fall Brawl registration listing and the Huntsman World Senior Games pickleball page use that same address. The 2330 Horseman Park Drive address—still repeated by several directories, and by the City’s own January 2024 press release—is Little Valley Elementary School next door. Enter it into a navigation app and you will be directed to a school parking lot, not the courts.</p><p>For wayfinding: the courts sit on the park’s west side, closest to Horseman Park Drive. The soccer fields, playgrounds, and splash pad are on the eastern portion of the same complex, which the City lists under the park address 2995 South 2350 East. Parking is free on site, and tournament weeks bring event signage and staff direction.</p><p class="editorial-disclosure">Court count, address, court location, and amenities re-checked October 7, 2026 against the City of St. George’s official pickleball and parks pages. This is independent, unpaid editorial coverage.</p></div></div></section>',
+    verifiedOn: "October 7, 2026",
+    verificationNote:
+      "Address, court count, and court location re-checked against the City of St. George’s official pickleball page, the City’s parks page for The Fields at Little Valley, and the official Fall Brawl 2026 registration listing.",
+  },
+};
+
 function eventCard(event, index) {
   return `<article class="event-card"><a class="event-card__media" href="/events/${event.slug}"><div class="venue-placeholder venue-placeholder--signage event-placeholder event-placeholder--card"><div class="venue-placeholder__copy"><span>2026 ST. GEORGE EVENT GUIDE</span><strong>${escapeHtml(event.shortName)}</strong></div></div></a><div class="event-card__body"><div class="event-card__index">${String(index + 1).padStart(2, "0")}</div><div><p class="eyebrow">${escapeHtml(event.cardDate)}</p><h3><a href="/events/${event.slug}">${escapeHtml(event.name)}</a></h3><p>${escapeHtml(event.summary)}</p><a class="text-link" href="/events/${event.slug}">Plan your visit →</a></div></div></article>`;
 }
@@ -131,6 +182,7 @@ const homeSchema = { "@context": "https://schema.org", "@type": "WebSite", name:
 const homeEvents = events.map(eventCard).join("");
 const homeList = venues.map(([slug, name, address, courts, setting, access], index) => `<a class="venue-row" href="/venues/${slug}"><span class="venue-row__number">${String(index + 1).padStart(2, "0")}</span><span class="venue-row__main"><strong>${escapeHtml(name)}</strong><span>${escapeHtml(address)}</span></span><span class="venue-row__fact"><small>Courts</small><strong>${courts ?? "Not confirmed"}</strong></span><span class="venue-row__fact venue-row__fact--setting"><small>Setting</small><strong>${escapeHtml(setting)}</strong></span><span class="venue-row__access">${escapeHtml(access)}</span></a>`).join("");
 const comingSoon = `<aside class="coming-soon-listing" aria-labelledby="coming-soon-title"><div><p class="eyebrow">COMING SOON · NOT YET OPEN</p><h3 id="coming-soon-title">The Pickle Pad</h3></div><div><strong>Opening soon — not yet open</strong><p>An indoor pickleball, bar, and restaurant concept with Crave Social Eatery planned on site. No address, hours, pricing, or court count will be listed until opening details are confirmed.</p><a href="https://thepicklepad.com" target="_blank" rel="noreferrer">Check current status →</a></div></aside>`;
+
 const homeMain = `<main><section class="intro-section"><div class="container"><p class="eyebrow">THE LOCAL COURT FIELD GUIDE</p><h1 style="font-family:Fraunces,serif;font-size:clamp(3rem,8vw,7rem);line-height:.95;max-width:1000px">Where to Play Pickleball in St. George</h1><p class="intro-copy">Public parks, indoor clubs, resort courts, and community facilities across Washington County—organized in one clear local guide.</p></div></section><section class="home-events"><div class="container"><div class="home-events__heading"><div><p class="eyebrow">TOURNAMENT SEASON · OCTOBER 2026</p><h2>The biggest pickleball weeks of the year.</h2></div></div><div class="event-card-grid">${homeEvents}</div></div></section><section class="directory-section" id="court-directory"><div class="container"><div class="directory-heading"><div><p class="eyebrow">${venues.length} CURRENT VENUES · 1 COMING SOON · WASHINGTON COUNTY</p><h2>Where to Play Across Greater St. George</h2></div></div><div class="venue-index">${homeList}</div>${comingSoon}</div></section></main>`;
 fs.writeFileSync(path.join(outDir, "index.html"), setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(homeMain)}</div>`), { title: "Where to Play Pickleball in St. George, Utah", description: homeDescription, canonical: `${siteUrl}/`, schema: homeSchema }));
 
@@ -140,6 +192,7 @@ for (const [slug, name, address, courts, setting, access, fee, locality = "St. G
     ? `${name}${String(name).endsWith(" Courts") ? "" : " Courts"} | ${locality}, Utah`
     : `${name} Pickleball Courts | ${locality}, Utah`;
   const isBlackDesert = slug === "black-desert-resort-pickleball";
+  const extras = venueExtras[slug] ?? {};
   const description = isBlackDesert
     ? "Black Desert Resort Pickleball: 21 courts now, 29 planned at full build-out, a 1,000–1,500-seat Championship Court, and members-or-guests-only access."
     : `${name}: ${courtLabel}, ${String(setting).toLowerCase()}, ${String(access).toLowerCase()}. View the address, hours guidance, and map.`;
@@ -151,10 +204,18 @@ for (const [slug, name, address, courts, setting, access, fee, locality = "St. G
   const mapLabel = mapType === "satellite" ? "Satellite · tight court view" : "Street-map fallback";
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed&t=${mapTileMode}&z=${venueMapZoom(courts)}&hl=en`;
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
-  const additionalFactsHtml = isBlackDesert ? '<div class="fact"><span>Full build-out</span><strong>29 courts</strong></div><div class="fact"><span>Championship Court</span><strong>1,000–1,500 seats</strong></div>' : "";
+  const additionalFactsHtml = isBlackDesert
+    ? '<div class="fact"><span>Full build-out</span><strong>29 courts</strong></div><div class="fact"><span>Championship Court</span><strong>1,000–1,500 seats</strong></div>'
+    : extras.factsHtml ?? "";
   const websiteHtml = isBlackDesert ? '<a class="contact-link" href="https://www.blackdesertresort.com/stay" target="_blank" rel="noreferrer">Explore stays at Black Desert Resort →</a>' : "";
-  const profileHtml = isBlackDesert ? '<section class="venue-profile-section"><div class="container venue-profile-grid"><div><p class="eyebrow">INDEPENDENT FACILITY PROFILE</p><h2>Tournament scale—with a clear access boundary.</h2></div><div class="venue-profile-copy"><p>Black Desert Resort currently operates 21 pickleball courts and plans 29 at full build-out. Its Championship Court is designed for 1,000–1,500 spectators, giving the complex the capacity to host major competition.</p><p>The resort partnered with the PPA Tour and Greater Zion to host the Greater Zion Cup in March 2026. It was one of five Cup events held worldwide on the Carvana PPA Tour that year.</p><p>Access is restricted to confirmed resort members and registered guests. Black Desert does not offer public day-visitor court access as of this writing. Anyone considering a stay should confirm current court access directly with the resort before booking.</p><p class="editorial-disclosure">This is independent, unpaid editorial coverage—not a resort promotion or partnership.</p></div></div></section>' : "";
-  const hoursText = isBlackDesert ? "Confirm current court access and hours directly with Black Desert Resort" : "Confirm current hours before visiting";
+  const profileHtml = isBlackDesert ? '<section class="venue-profile-section"><div class="container venue-profile-grid"><div><p class="eyebrow">INDEPENDENT FACILITY PROFILE</p><h2>Tournament scale—with a clear access boundary.</h2></div><div class="venue-profile-copy"><p>Black Desert Resort currently operates 21 pickleball courts and plans 29 at full build-out. Its Championship Court is designed for 1,000–1,500 spectators, giving the complex the capacity to host major competition.</p><p>The resort partnered with the PPA Tour and Greater Zion to host the Greater Zion Cup in March 2026. It was one of five Cup events held worldwide on the Carvana PPA Tour that year.</p><p>Access is restricted to confirmed resort members and registered guests. Black Desert does not offer public day-visitor court access as of this writing. Anyone considering a stay should confirm current court access directly with the resort before booking.</p><p class="editorial-disclosure">This is independent, unpaid editorial coverage—not a resort promotion or partnership.</p></div></div></section>' : extras.profileHtml ?? "";
+  const hoursText = isBlackDesert ? "Confirm current court access and hours directly with Black Desert Resort" : extras.hoursText ?? "Confirm current hours before visiting";
+  const amenitiesHtml = extras.amenities
+    ? `<section class="amenities-section"><div class="container amenities-grid"><div><p class="eyebrow">ON SITE</p><h2>Amenities</h2></div><ul>${extras.amenities.map((amenity) => `<li>${escapeHtml(amenity)}</li>`).join("")}</ul></div></section>`
+    : "";
+  const verifiedHtml = extras.verifiedOn
+    ? `<div class="verified-note"><strong>Verified ${escapeHtml(extras.verifiedOn)}</strong><p>${escapeHtml(extras.verificationNote)}</p><p>Venue details can change. Confirm current hours, access, and tournament closures with the City or the venue before a special trip.</p></div>`
+    : "";
   const schema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "SportsActivityLocation"],
@@ -164,7 +225,7 @@ for (const [slug, name, address, courts, setting, access, fee, locality = "St. G
     address: { "@type": "PostalAddress", streetAddress: noStreetAddress ? undefined : String(address).split(",")[0], addressLocality: locality, addressRegion: "UT", postalCode: postalCode ?? String(address).match(/\b\d{5}\b/)?.[0], addressCountry: "US" },
     priceRange: fee,
   };
-  const main = `<main class="venue-page"><section class="venue-masthead"><div class="container"><a class="back-link" href="/#court-directory">← All Washington County courts</a><div class="venue-masthead__title"><p class="eyebrow">${escapeHtml(locality).toUpperCase()}, UTAH</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div><div class="venue-placeholder venue-placeholder--hero" role="img" aria-label="${escapeHtml(name)} photography placeholder"><div class="venue-placeholder__copy"><span>ST. GEORGE COURT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div></div></section><section class="venue-details"><div class="container venue-details__grid"><div class="venue-details__main"><p class="eyebrow">THE ESSENTIALS</p><h2>Plan your visit</h2><div class="address-block"><div><small>ADDRESS</small><address>${escapeHtml(address)}</address></div></div><div class="hours-block"><div><small>HOURS</small><p>${escapeHtml(hoursText)}</p></div></div></div><aside class="facts-panel"><div class="fact"><span>Court count</span><strong>${courts ?? "Not confirmed"}</strong></div><div class="fact"><span>Indoor / outdoor</span><strong>${escapeHtml(setting)}</strong></div><div class="fact"><span>Fee / membership</span><strong>${escapeHtml(fee)}</strong></div><div class="fact"><span>Access</span><strong>${escapeHtml(access)}</strong></div>${additionalFactsHtml}${websiteHtml}</aside></div></section>${profileHtml}<section class="map-section" aria-labelledby="map-heading-${escapeHtml(slug)}"><div class="container"><div class="map-heading"><div><p class="eyebrow">WAYFINDING</p><h2 id="map-heading-${escapeHtml(slug)}">Find ${escapeHtml(name)}</h2></div><div class="map-heading__actions"><span class="map-mode map-mode--${mapType}">${mapLabel}</span><a href="${escapeHtml(googleMapsUrl)}" target="_blank" rel="noreferrer">Open in Google Maps →</a></div></div>${mapFallbackReason ? `<p class="map-fallback-note">${escapeHtml(mapFallbackReason)}</p>` : ""}<div class="map-frame"><iframe title="${escapeHtml(mapLabel)} of ${escapeHtml(name)}" src="${escapeHtml(mapUrl)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section></main>`;
+  const main = `<main class="venue-page"><section class="venue-masthead"><div class="container"><a class="back-link" href="/#court-directory">← All Washington County courts</a><div class="venue-masthead__title"><p class="eyebrow">${escapeHtml(locality).toUpperCase()}, UTAH</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div><div class="venue-placeholder venue-placeholder--hero" role="img" aria-label="${escapeHtml(name)} photography placeholder"><div class="venue-placeholder__copy"><span>ST. GEORGE COURT GUIDE</span><strong>${escapeHtml(name)}</strong></div></div></div></section><section class="venue-details"><div class="container venue-details__grid"><div class="venue-details__main"><p class="eyebrow">THE ESSENTIALS</p><h2>Plan your visit</h2><div class="address-block"><div><small>ADDRESS</small><address>${escapeHtml(address)}</address></div></div><div class="hours-block"><div><small>HOURS</small><p>${escapeHtml(hoursText)}</p></div></div>${verifiedHtml}</div><aside class="facts-panel"><div class="fact"><span>Court count</span><strong>${courts ?? "Not confirmed"}</strong></div><div class="fact"><span>Indoor / outdoor</span><strong>${escapeHtml(setting)}</strong></div><div class="fact"><span>Fee / membership</span><strong>${escapeHtml(fee)}</strong></div><div class="fact"><span>Access</span><strong>${escapeHtml(access)}</strong></div>${additionalFactsHtml}${websiteHtml}</aside></div></section>${profileHtml}${amenitiesHtml}<section class="map-section" aria-labelledby="map-heading-${escapeHtml(slug)}"><div class="container"><div class="map-heading"><div><p class="eyebrow">WAYFINDING</p><h2 id="map-heading-${escapeHtml(slug)}">Find ${escapeHtml(name)}</h2></div><div class="map-heading__actions"><span class="map-mode map-mode--${mapType}">${mapLabel}</span><a href="${escapeHtml(googleMapsUrl)}" target="_blank" rel="noreferrer">Open in Google Maps →</a></div></div>${mapFallbackReason ? `<p class="map-fallback-note">${escapeHtml(mapFallbackReason)}</p>` : ""}<div class="map-frame"><iframe title="${escapeHtml(mapLabel)} of ${escapeHtml(name)}" src="${escapeHtml(mapUrl)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section></main>`;
   const venueHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title, description, canonical, schema, ogType: "place" });
   writeCleanRoute(`/venues/${slug}`, venueHtml);
 }
@@ -194,7 +255,11 @@ for (const event of events) {
     },
     organizer: { "@type": "Organization", name: event.organizer, url: event.officialUrl },
   };
-  const main = `<main class="event-page"><section class="event-masthead"><div class="container"><a class="back-link" href="/events">← All tournaments &amp; events</a><div class="event-masthead__title"><p class="eyebrow">ST. GEORGE, UTAH · 2026</p><h1>${escapeHtml(event.name)}</h1><p>${escapeHtml(event.dateLabel)}</p></div>${placeholder(event.shortName)}</div></section><section class="event-overview"><div class="container event-overview__grid"><div class="event-story"><p class="eyebrow">THE EVENT</p><h2>What it is—and why it matters.</h2><p>${event.bodyHtml}</p></div><aside class="event-facts"><div class="event-fact"><div><span>DATES</span><strong>${escapeHtml(event.dateLabel)}</strong></div></div><div class="event-fact"><div><span>PRIMARY VENUE</span><a href="/venues/little-valley-pickleball-complex">${escapeHtml(event.locationName)}</a><small>${escapeHtml(event.locationAddress)}</small></div></div><a class="primary-link" href="${event.officialUrl}">Official event page →</a></aside></div></section><section class="schedule-section"><div class="container"><div class="schedule-heading"><div><p class="eyebrow">SCHEDULE AT A GLANCE</p><h2>Build a plan, then check it.</h2></div><div class="status-note"><strong>Check official schedule</strong><p>Registration availability, match assignments, and event-day logistics can change after publication.</p></div></div></div></section></main>`;
+  const scheduleRowsHtml = event.schedule
+    .map(([date, title, detail, needsCheck]) => `<div class="schedule-row${needsCheck ? " schedule-row--check" : ""}"><span>${escapeHtml(date)}</span><strong>${escapeHtml(title)}</strong><p>${escapeHtml(detail)}</p></div>`)
+    .join("");
+  const statusHtml = `<div class="status-note"><strong>Schedule status</strong><p>${escapeHtml(event.statusNote)}</p><p class="verified-stamp">Verified ${escapeHtml(event.verifiedOn)}</p><a href="${escapeHtml(event.scheduleUrl)}" target="_blank" rel="noreferrer">Check official schedule →</a></div>`;
+  const main = `<main class="event-page"><section class="event-masthead"><div class="container"><a class="back-link" href="/events">← All tournaments &amp; events</a><div class="event-masthead__title"><p class="eyebrow">ST. GEORGE, UTAH · 2026</p><h1>${escapeHtml(event.name)}</h1><p>${escapeHtml(event.dateLabel)}</p></div>${placeholder(event.shortName)}</div></section><section class="event-overview"><div class="container event-overview__grid"><div class="event-story"><p class="eyebrow">THE EVENT</p><h2>What it is—and why it matters.</h2><p>${event.bodyHtml}</p></div><aside class="event-facts"><div class="event-fact"><div><span>DATES</span><strong>${escapeHtml(event.dateLabel)}</strong></div></div><div class="event-fact"><div><span>PRIMARY VENUE</span><a href="/venues/little-valley-pickleball-complex">${escapeHtml(event.locationName)}</a><small>${escapeHtml(event.locationAddress)}</small></div></div><a class="primary-link" href="${event.officialUrl}">Official event page →</a></aside></div></section><section class="schedule-section"><div class="container"><div class="schedule-heading"><div><p class="eyebrow">SCHEDULE AT A GLANCE</p><h2>Build a plan, then check it.</h2></div>${statusHtml}</div><div class="schedule-list">${scheduleRowsHtml}</div></div></section></main>`;
   const eventHtml = setHead(baseHtml.replace('<div id="root"></div>', `<div id="root">${shell(main)}</div>`), { title: `${event.name} 2026 | St. George, Utah`, description: event.description, canonical, schema, ogType: "article" });
   writeCleanRoute(`/events/${event.slug}`, eventHtml);
 }

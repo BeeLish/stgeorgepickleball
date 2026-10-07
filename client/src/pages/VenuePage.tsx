@@ -65,6 +65,13 @@ export default function VenuePage() {
                 </div>
               </div>
               {venue.notable && <p className="notable">{venue.notable}</p>}
+              {venue.verifiedOn && (
+                <div className="verified-note">
+                  <strong>Verified {venue.verifiedOn}</strong>
+                  {venue.verificationNote && <p>{venue.verificationNote}</p>}
+                  <p>Venue details can change. Confirm current hours, access, and tournament closures with the City or the venue before a special trip.</p>
+                </div>
+              )}
             </div>
 
             <aside className="facts-panel" aria-label="Venue facts">

@@ -32,25 +32,56 @@ export type Venue = {
   };
   description: string;
   notable?: string;
+  verifiedOn?: string;
+  verificationNote?: string;
 } & VenueMapConfig;
 
 export const venues: Venue[] = [
   {
     slug: "little-valley-pickleball-complex",
     name: "Little Valley Pickleball Complex",
-    address: "2330 Horseman Park Drive, St. George, UT 84790",
-    mapQuery: "Little Valley Pickleball Complex, St. George, Utah",
+    address: "2149 E Horseman Park Drive, St. George, UT 84790",
+    streetAddress: "2149 E Horseman Park Drive",
+    locality: "St. George",
+    postalCode: "84790",
+    mapQuery: "Little Valley Pickleball Complex, 2149 E Horseman Park Drive, St. George, Utah",
     courts: 33,
     setting: "Outdoor",
     surface: "Concrete with permanent lines and nets",
     access: "Free and open to the public",
     accessKind: "free",
     fee: "Free",
-    hours: "Confirm current park hours before visiting",
+    hours: "The City does not publish official court hours. Free public play is available whenever City leagues, clinics, and tournaments are not using the courts; check in with the attendant during City programs, or call City Parks before a special trip.",
     phone: "(435) 703-1146",
-    amenities: ["Court lighting", "Restrooms", "Drinking water", "Wheelchair accessible"],
+    amenities: [
+      "Court lighting",
+      "Restrooms",
+      "Drinking fountains",
+      "Free on-site parking",
+      "Covered pavilions",
+      "Picnic tables",
+      "Playground and splash pad",
+    ],
+    facts: [
+      { label: "Courts located", value: "West side of The Fields at Little Valley, closest to Horseman Park Drive" },
+      { label: "Court reservations", value: "City Parks · (435) 627-4530" },
+      { label: "Other park address", value: "2995 S 2350 East — the east side of the same park" },
+      { label: "Championship court", value: "Permanent bleacher seating" },
+    ],
     description: "St. George’s largest public pickleball destination, with 33 outdoor courts and a championship court with permanent bleacher seating.",
     notable: "The complex hosts major local tournaments and was named Public Facility of the Year by the Professional Pickleball Registry in 2020.",
+    profile: {
+      eyebrow: "INDEPENDENT FACILITY PROFILE",
+      heading: "33 courts on the west side—and an address worth double-checking.",
+      paragraphs: [
+        "Little Valley is the City of St. George’s flagship pickleball facility: 33 outdoor courts, including a championship court with permanent bleacher seating, occupying the west side of The Fields at Little Valley. The courts are free and open to the public whenever City leagues, clinics, and tournaments are not using them.",
+        "The address is the detail most guides get wrong. The City’s official pickleball page lists Little Valley at 2149 Horseman Park Drive, and both the City’s Fall Brawl registration listing and the Huntsman World Senior Games pickleball page use that same address. The 2330 Horseman Park Drive address—still repeated by several directories, and by the City’s own January 2024 press release—is Little Valley Elementary School next door. Enter it into a navigation app and you will be directed to a school parking lot, not the courts.",
+        "For wayfinding: the courts sit on the park’s west side, closest to Horseman Park Drive. The soccer fields, playgrounds, and splash pad are on the eastern portion of the same complex, which the City lists under the park address 2995 South 2350 East. Parking is free on site, and tournament weeks bring event signage and staff direction.",
+      ],
+      disclosure: "Court count, address, court location, and amenities re-checked October 7, 2026 against the City of St. George’s official pickleball and parks pages. This is independent, unpaid editorial coverage.",
+    },
+    verifiedOn: "October 7, 2026",
+    verificationNote: "Address, court count, and court location re-checked against the City of St. George’s official pickleball page, the City’s parks page for The Fields at Little Valley, and the official Fall Brawl 2026 registration listing.",
   },
   {
     slug: "black-desert-resort-pickleball",

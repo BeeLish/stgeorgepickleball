@@ -111,6 +111,7 @@ export default function EventPage() {
               <div className="status-note">
                 <strong>Schedule status</strong>
                 <p>{renderLinkedText(event.statusNote, event)}</p>
+                <p className="verified-stamp">Verified {event.verifiedOn}</p>
                 <a href={event.scheduleUrl} target="_blank" rel="noreferrer">Check official schedule <ArrowUpRight aria-hidden="true" /></a>
               </div>
             </div>
@@ -152,7 +153,7 @@ export default function EventPage() {
             <div>
               <p className="eyebrow">OFFICIAL SOURCES</p>
               <h2>Use the live source when details matter.</h2>
-              <p>Checked September 11, 2026. Registration availability, match assignments, and event-day logistics can change after publication.</p>
+              <p>Last verified {event.verifiedOn}. {event.verificationNote} Registration availability, match assignments, and event-day logistics can change after publication.</p>
             </div>
             <div className="official-link-list">
               <a href={event.registrationUrl} target="_blank" rel="noreferrer"><span>Registration</span><ArrowUpRight aria-hidden="true" /></a>

@@ -310,6 +310,10 @@
 .address-block address, .hours-block p { margin: .45rem 0 0; font-size: 1rem; font-style: normal; line-height: 1.7; }
 .address-block a { display: inline-flex; align-items: center; gap: .35rem; margin-top: .8rem; color: var(--sage); font-size: .75rem; font-weight: 750; text-decoration: none; text-transform: uppercase; }.address-block a svg { width: 14px; }
 .notable { margin: 2rem 0 0; padding: 1.5rem 0 0 2rem; border-top: 1px solid var(--border); border-left: 3px solid var(--rust); color: #5f594f; font-family: "Fraunces", serif; font-size: 1.24rem; line-height: 1.6; }
+.verified-note { margin: 2.5rem 0 0; padding: 1.5rem 0 0 1.5rem; border-top: 1px solid var(--border); border-left: 3px solid var(--sage); }
+.verified-note strong { display: block; margin-bottom: .6rem; color: var(--rust); font-size: .63rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.verified-note p { margin: 0 0 .7rem; color: #5f594f; font-size: .82rem; line-height: 1.7; }
+.verified-note p:last-child { margin-bottom: 0; color: #7a7369; font-size: .78rem; }
 .facts-panel { align-self: start; border-top: 2px solid var(--charcoal); }
 .fact { display: grid; grid-template-columns: minmax(130px, .72fr) minmax(0, 1fr); gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
 .fact strong { font-size: .88rem; font-weight: 620; line-height: 1.55; }
@@ -378,6 +382,7 @@
 .status-note strong { font-family: "Fraunces", serif; font-size: 1.25rem; font-weight: 550; }
 .status-note p { margin: .8rem 0 1rem; color: #605b52; font-size: .84rem; line-height: 1.7; }
 .status-note a { display: inline-flex; align-items: center; gap: .45rem; color: var(--sage); font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-decoration: none; text-transform: uppercase; }
+.status-note .verified-stamp { margin: 0 0 1rem; color: var(--sage); font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .status-note svg { width: 15px; }
 .schedule-list { border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--charcoal); }
 .schedule-row { display: grid; grid-template-columns: 180px minmax(230px, .65fr) minmax(0, 1fr); gap: 2rem; align-items: start; padding: 1.55rem 0; border-bottom: 1px solid #c7baa6; }
