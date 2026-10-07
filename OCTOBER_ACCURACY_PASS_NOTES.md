@@ -94,3 +94,39 @@ Structured data (schema.org `LocalBusiness` / `SportsActivityLocation` / `Event`
 2. **Little Valley phone number.** The venue page's published number, (435) 703-1146, comes from the Greater Zion tourism listing, not from a City source. The City's own pages direct court reservations to City Parks at (435) 627-4530, which has now been added as a fact. Brian should confirm which number should be primary.
 3. **Live satellite check of the courts.** The map embed for Little Valley now uses the verified street address in its query. A visual confirmation that the satellite view is tight and current enough to show the individual courts — per the standing satellite standard — has not been done in this pass.
 4. **City press release correction.** The City's January 2024 release still carries the 2330 address. It would be reasonable for Brian to mention the correct address when he makes contact with the City Parks department, and to ask whether the release can be corrected.
+---
+
+## 6. Source URLs
+
+**City of St. George**
+- Official pickleball courts page — court counts and addresses: https://sgcityutah.gov/activity/recreation/sports___programs/pickleball/index.php
+- Tournament calendar — Fall Brawl dates: https://sgcityutah.gov/activity/recreation/pickleball/adult_pickleball/pickleball_tournaments.php
+- Parks page for The Fields at Little Valley — park address 2995 S 2350 East, amenities list, "on the west side of the park are 33 Pickleball courts": https://sgcityutah.gov/business_detail_T18_R95.php
+
+**Fall Brawl 2026**
+- Official registration listing — divisions by day, 1,233 players, closed registration, DUPR, pricing: https://pickleballtournaments.com/tournaments/fall-brawl-2026
+
+**Huntsman World Senior Games 2026**
+- Official pickleball page — schedule, divisions, fees, deadlines, senior-games qualification, SunRiver rules: https://seniorgames.net/sports/pickleball
+- Official 2026 pickleball schedule and venue listing — venue address, Oct 11 open practice: https://pickleballtournaments.com/tournaments/a5227449-351e-4d13-9287-4323d60b3ef3
+- Official schedules: https://seniorgames.net/schedules
+- Official venues and shuttle guidance: https://seniorgames.net/venues
+
+**Address cross-checks**
+- Little Valley Elementary School at 2330 E Horseman Park Drive — Washington County School District school listing and the school's own contact page.
+- Relative position of the school (east of the court complex) — OpenStreetMap / Nominatim geocoding plus the Google Maps place record for 2149 E Horseman Park Dr.
+
+---
+
+## 7. Deployment verification record
+
+- **Commit:** `5e4e55dcd35ce802bbf7a5409cae13970712f0ae` on `main` in `BeeLish/stgeorgepickleball`
+- **Confirmed in the real remote, not an internal one:** `https://raw.githubusercontent.com/BeeLish/stgeorgepickleball/main/client/src/data/events.ts` returned the new content over an unauthenticated public request.
+- **Vercel deployment:** `dpl_7F84PWDt9fd3i2FHMgDtawn6mp3g` — state **READY**, target **production**, `githubCommitSha` matching the commit above, `githubCommitRef` `main`, repo `BeeLish/stgeorgepickleball`.
+- **Live page checks** (fetched fresh with `Cache-Control: no-cache`):
+  - `/` — directory row now reads 2149 E Horseman Park Drive; no 2330 address anywhere.
+  - `/venues/little-valley-pickleball-complex` — corrected address, "Verified October 7, 2026" block, four new facts, updated amenities, and the facility profile.
+  - `/events/fall-brawl-pickleball-2026` — 6 schedule rows and the verification stamp.
+  - `/events/huntsman-world-senior-games-pickleball-2026` — 8 schedule rows and the verification stamp.
+  - `/sitemap.xml` — `lastmod` 2026-10-07 on all changed URLs.
+  - **Client JavaScript bundle** `/assets/index-DUx2gatU.js` contains the corrected address, "1,233", and the Little Valley Elementary School explanation, so the React-hydrated page matches the crawled HTML rather than reverting to the old address.
